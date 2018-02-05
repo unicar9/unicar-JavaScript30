@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+  font-size: 30px;
 }
 
 body,
@@ -17,4 +17,23 @@ html {
   justify-content: center;
 }
 
+.key {
+  min-width: 40px;
+  text-align: center;
+  border: 0;
+  background: #0087cc;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 #006599;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin: 20px;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all 0.1s linear;
+}
 
+.playing {
+  box-shadow: 0 2px 0 #006599;
+  transform: translateY(3px);
+}
