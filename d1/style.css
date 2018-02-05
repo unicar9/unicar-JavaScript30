@@ -1,5 +1,6 @@
 html {
   font-size: 30px;
+  background-color: #F2F7E4;
 }
 
 body,
@@ -21,19 +22,42 @@ html {
   min-width: 40px;
   text-align: center;
   border: 0;
-  background: #0087cc;
   border-radius: 4px;
-  box-shadow: 0 5px 0 #006599;
   color: #fff;
   cursor: pointer;
   font: inherit;
   margin: 20px;
   outline: 0;
   padding: 12px 20px;
-  transition: all 0.1s linear;
+  transition: all 0.2s linear;
 }
 
-.playing {
-  box-shadow: 0 2px 0 #006599;
+.key:nth-child(3n+1) {
+    background: #f8ba97;
+    box-shadow: 0 5px 0 #b88a70;
+}
+
+.key:nth-child(3n+2) {
+    background: #522B5F;
+    box-shadow: 0 5px 0 #361342;
+}
+
+.key:nth-child(3n) {
+    background: #C7EE81;
+    box-shadow: 0 5px 0 #9fbd68;
+}
+
+.playing:nth-child(3n+1) {
+  box-shadow: 0 2px 0 #b88a70;
+  transform: translateY(3px);
+}
+
+.playing:nth-child(3n+2) {
+  box-shadow: 0 2px 0 #361342;
+  transform: translateY(3px);
+}
+
+.playing:nth-child(3n) {
+  box-shadow: 0 2px 0 #9fbd68;
   transform: translateY(3px);
 }
