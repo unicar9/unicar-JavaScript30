@@ -1,41 +1,52 @@
-const keyNamePairs = {
-    65: 'CLAP',
-    83: 'HIHAT',
-    68: 'KICK',
-    70: 'OPENHAT',
-    71: 'BOOM',
-    72: 'RIDE',
-    74: 'SNARE',
-    75: 'TOM',
-    76: 'TINK'
-}
+window.addEventListener("DOMContentLoaded", () => {
+  
+  const keyNamePairs = {
+    a: "CLAP",
+    s: "HIHAT",
+    d: "KICK",
+    f: "OPENHAT",
+    g: "BOOM",
+    h: "RIDE",
+    j: "SNARE",
+    k: "TOM",
+    l: "TINK"
+  }
 
-function playSound(e) {
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"`);
+  const $keys = document.querySelector(".keys")
 
-  if (!audio) return;
+  const data = Object.assign({}, ...Object.keys(keyNamePairs).map(key => {
+    
+    const $div = document.createElement("div")
+    $div.classList.add("key")
+    $div.innerHTML = `<kbd>${key.toUpperCase()}</kbd>`
+    $div.addEventListener("transitionend", () =>
+      $div.classList.remove("playing")
+    )
+    $div.addEventListener("click", () => playSound({ key }))
 
-  const soundName = document.querySelector('.sound-name')
-  soundName.innerHTML = keyNamePairs[e.keyCode]
+    return ({
+      [key]: {
+        el: $keys.appendChild($div),
+        audio: new Audio(
+          `sounds/${
+            keyNamePairs[key]
+          }.wav`
+        )
+      }
+    })
+    
+  }))
 
-  audio.currentTime = 0;
-  audio.play();
+  window.addEventListener('keydown', playSound)
 
-  key.classList.add("playing");
-}
+  function playSound ({ key }) {
+    data[key].el.classList.add('playing')
+    data[key].audio.currentTime = 0
+    data[key].audio.play()
+    document.querySelector('.sound-name').innerHTML = keyNamePairs[key]
+  }
+})
 
-function removeTransition(e) {
-  if (e.propertyName !== "transform") return;
 
-  console.log(e.propertyName);
-  this.classList.remove("playing");
-}
 
-window.addEventListener("DOMContentLoaded", function() {
-  const keys = document.querySelectorAll(".key");
-  console.log(keys);
-  keys.forEach(key => key.addEventListener("transitionend", removeTransition));
-});
 
-window.addEventListener("keydown", playSound);
