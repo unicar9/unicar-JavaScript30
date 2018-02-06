@@ -43,6 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
     data[key].el.classList.add('playing')
     data[key].audio.currentTime = 0
     data[key].audio.play()
+
     document.querySelector('.sound-name').innerHTML = keyNamePairs[key]
   }
 })
