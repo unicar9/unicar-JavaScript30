@@ -15,7 +15,7 @@ body {
     padding: 50%;
     position: relative;
     background-color: #fee5ca;
-    border: 20px solid #cca7c2;
+    border: 2vmin solid #cca7c2;
     -webkit-box-shadow: 10px 20px 50px #885e7dab;
     -moz-box-shadow: 10px 20px 50px #885e7dab;
     box-shadow: 10px 20px 50px #885e7dab;
