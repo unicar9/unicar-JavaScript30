@@ -2,13 +2,11 @@ body {
     background-color: #a6c5c5;
 }
 
-
 .container {
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 1fr));
     grid-auto-rows: minmax(100px, auto);
 }
-
 
 .clock {
     grid-row: 2/3;
