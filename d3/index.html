@@ -10,15 +10,25 @@
 </head>
 <body>
     <div class="controls">
-        <label for="color1">Color1:</label>
-        <input id="color1" type="color" name="color1" value="10">
-    
-        <label for="color2">Color2:</label>
-        <input id="color2" type="color" name="color2" value="10">
-    
-        <label for="degree">Degree</label>
-        <input id="degree" type="range" name="degree" min="0" max="180" value="#ffc600">
+        <div class="color-wrapper">
+            <input id="color1" type="color" name="color1" value="#00dbde">
+            <input id="color2" type="color" name="color2" value="#fc00ff">
+        </div>
+        
+        <input id="angle" type="range" name="angle" min="-180" max="180" value="0" data-degree="deg">        
     </div>
 
 </body>
+<script>
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+        const suffix = this.dataset.degree || '';
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+</script>
 </html>
