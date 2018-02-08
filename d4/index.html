@@ -24,11 +24,19 @@
         const $div = document.createElement("div")
 
         const size = randy(50, 100)
+        const number = randy(1, 100)
         const hue = randy(0, 360)
+        const top = randy(0, 90)
+        const left = randy(5, 95)
 
-        $div.style.width = `${size}px`
-        $div.style.height = `${size}px`
-        $div.style.backgroundColor = `hsl(${hue}, 80%, 80%)`
+        $div.style.width = '50px'
+        $div.style.height = '50px'
+        $div.style.lineHeight = '50px'
+        $div.style.fontSize = '50px'
+        $div.innerText = number
+        $div.style.color = `hsl(${hue}, 80%, 80%)`
+        $div.style.top = `${top}%`
+        $div.style.left = `${left}%`
         
         return $wrapper.appendChild($div)
     })
