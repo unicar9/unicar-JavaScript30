@@ -3,7 +3,7 @@
 html {
     box-sizing: border-box;
     font-family:'Oxygen', sans-serif;
-    font-size: 50px;
+    font-size: 80px;
     font-weight: 700;
 }
 
@@ -15,8 +15,12 @@ body {
 }
 
 p {
-    writing-mode: vertical-lr;
-    color: #ffffff
+    transform: rotate(90deg);
+    transform-origin: right 39%;
+    color: #ffffff;
+    flex: 1;
+    width: 200px;
+    white-space: nowrap;
 }
 
 .panels {
@@ -27,9 +31,21 @@ p {
 
 .panel {
     flex: 1;
-    align-items:center;
     display: flex;
+    /* flex-wrap: nowrap; */
+    align-items: center;
     justify-content: flex-end;
+    overflow: hidden;
+
+    transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+}
+
+.panel:hover {
+    flex: 5;
+    font-size: 100px;
 }
 
 .panel1 {
