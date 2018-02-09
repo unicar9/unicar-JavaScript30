@@ -26,8 +26,8 @@
         const size = randy(50, 100)
         const number = randy(1, 100)
         const hue = randy(0, 360)
-        const top = randy(0, 90)
-        const left = randy(5, 95)
+        const top = randy(1, 15)
+        const left = randy(1, 25)
 
         $div.style.width = '50px'
         $div.style.height = '50px'
@@ -35,8 +35,8 @@
         $div.style.fontSize = '50px'
         $div.innerText = number
         $div.style.color = `hsl(${hue}, 80%, 80%)`
-        $div.style.top = `${top}%`
-        $div.style.left = `${left}%`
+        $div.style.top = `${top * 50}px`
+        $div.style.left = `${left * 50}px`
         
         return $wrapper.appendChild($div)
     })
