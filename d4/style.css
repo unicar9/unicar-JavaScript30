@@ -1,11 +1,51 @@
-.wrapper {
-    width: 100vw;
+html, body {
     height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #222222;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+.buttons {
+    width: 25%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    color: white;
+    background: none;
+    border: 3px solid #fbff1e;
+    height: 30px;
+    width: 70px;
+    line-height: 30px;
+    border-radius: 5px;
+    transition: all .5s ease
+}
+
+.button:hover,
+.button:focus {
+  box-shadow: inset 70px 0 0 0 #a6d634;
+  border: 3px solid #a6d634;
+}
+
+.wrapper {
+    width: 600px;
+    height: 600px;
     display: grid;
-    grid-auto-columns: 50px;
-    grid-auto-rows: 50px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 10px;
 }
 
 .wrapper div {
-    position: absolute
+    /* position: absolute */
 }
