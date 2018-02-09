@@ -15,12 +15,14 @@ body {
 }
 
 p {
+    filter: blur(3px);
     transform: rotate(90deg);
     transform-origin: right 39%;
     color: #ffffff;
-    flex: 1;
-    width: 200px;
+    /* flex: 1; */
+    /* width: 200px; */
     white-space: nowrap;
+    transition: all 0.7s cubic-bezier(0.42,-0.18, 0.6,-0.34) 0.7s;
 }
 
 .panels {
@@ -32,20 +34,20 @@ p {
 .panel {
     flex: 1;
     display: flex;
-    /* flex-wrap: nowrap; */
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     overflow: hidden;
-
-    transition:
-    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-    background 0.2s;
+    transition: flex 0.7s ease-in-out;
 }
 
 .panel:hover {
     flex: 5;
-    font-size: 100px;
+}
+
+.panel:hover p {
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    filter: none;
 }
 
 .panel1 {
