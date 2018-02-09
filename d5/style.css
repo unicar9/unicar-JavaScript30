@@ -19,8 +19,6 @@ p {
     transform: rotate(90deg);
     transform-origin: right 39%;
     color: #ffffff;
-    /* flex: 1; */
-    /* width: 200px; */
     white-space: nowrap;
     transition: all 0.7s cubic-bezier(0.42,-0.18, 0.6,-0.34) 0.7s;
 }
