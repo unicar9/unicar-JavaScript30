@@ -23,8 +23,6 @@
         return Math.floor(Math.random() * (max - min)) + min
     }
 
-
-
     const $wrapper = document.querySelector('.wrapper')
 
     const $divs = Array(10).fill().map((x, index) => {
@@ -34,7 +32,6 @@
         const number = randy(1, 100)
         const hue = randy(0, 360)
         let column = randy(1, 11)
-        let row = randy(1, 11)
 
         $div.style.width = '50px'
         $div.style.height = '50px'
@@ -49,7 +46,7 @@
     })
 
     
-    $divs.sort((a, b) => a.style.width > b.style.width ? 1 : -1)
+    $divs.sort((a, b) => a.innerText > b.innerText ? 1 : -1)
     console.log($divs)
 
     function render() {
@@ -59,10 +56,9 @@
 
     render()
 
-
-
-
-    
+    const $map = document.querySelector('.map')
+    const $reduce = document.querySelector('.reduce')
+    const $sort = document.querySelector('.sort')
     
 </script>
 </html>
