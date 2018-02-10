@@ -51,14 +51,23 @@
 
     function render() {
         $wrapper.innerHTML = ''
-        $divs.forEach(div => $wrapper.appendChild(div))
+        $divs.forEach((div, index) => {
+            div.style.gridRow = index + 1
+            div.style.gridColumn = index + 1
+            return $wrapper.appendChild(div)
+        })
     }
 
-    render()
+    
 
     const $map = document.querySelector('.map')
     const $reduce = document.querySelector('.reduce')
     const $sort = document.querySelector('.sort')
+
+    $sort.addEventListener('click', () => {
+        $divs.sort((a, b) => a.innerText > b.innerText ? 1 : -1)
+        render()
+    })
     
 </script>
 </html>
