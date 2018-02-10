@@ -29,7 +29,7 @@
         const $div = document.createElement("div")
 
         const size = randy(50, 100)
-        const number = randy(1, 100)
+        const number = randy(1, 50)
         const hue = randy(0, 360)
         let column = randy(1, 11)
 
@@ -67,6 +67,14 @@
     $sort.addEventListener('click', () => {
         $divs.sort((a, b) => a.innerText > b.innerText ? 1 : -1)
         render()
+    })
+
+    $reduce.addEventListener('click', () => {
+        $divs.reduce(a)
+    })
+
+    $map.addEventListener('click', () => {
+
     })
     
 </script>
