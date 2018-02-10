@@ -23,25 +23,31 @@
         return Math.floor(Math.random() * (max - min)) + min
     }
 
+
+
     const $wrapper = document.querySelector('.wrapper')
 
-    const $divs = Array(20).fill().map(x => {
+    const $divs = Array(10).fill().map((x, index) => {
         const $div = document.createElement("div")
 
         const size = randy(50, 100)
         const number = randy(1, 100)
         const hue = randy(0, 360)
-        const top = randy(1, 15)
-        const left = randy(1, 25)
+        let column = randy(1, 11)
+        let row = randy(1, 11)
+
+        // if (rowNumbers.indexof(row) > -1) {
+
+        // }
 
         $div.style.width = '50px'
         $div.style.height = '50px'
         $div.style.lineHeight = '50px'
         $div.style.fontSize = '50px'
         $div.innerText = number
-        $div.style.color = `hsl(${hue}, 80%, 80%)`
-        $div.style.top = `${top * 50}px`
-        $div.style.left = `${left * 50}px`
+        $div.style.color = `hsl(${hue}, 100%, 80%)`
+        $div.style.gridRow = index + 1
+        $div.style.gridColumn = column
         
         return $wrapper.appendChild($div)
     })
