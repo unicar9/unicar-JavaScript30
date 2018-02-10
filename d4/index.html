@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="buttons">
+        <div class="button reset">Reset</div>
         <div class="button map">Map</div>
         <div class="button reduce">Reduce</div>
         <div class="button sort">Sort</div>
@@ -49,13 +50,26 @@
     $divs.sort((a, b) => a.innerText > b.innerText ? 1 : -1)
     console.log($divs)
 
-    function render() {
+    function renderSort() {
         $wrapper.innerHTML = ''
         $divs.forEach((div, index) => {
-            div.style.gridRow = index + 1
+            div.style.gridRow = 5
             div.style.gridColumn = index + 1
             return $wrapper.appendChild(div)
         })
+    }
+
+    function renderReduce(n) {
+        $wrapper.innerHTML = ''
+        const $div = document.createElement("div")
+
+        $div.innerText = n
+        $div.style.gridRow = '4/8'
+        $div.style.gridColumn = '4/8'
+        $div.style.color = `hsl(${n}, 100%, 80%)`
+        $div.style.fontSize = '150px'
+
+        $wrapper.appendChild($div)
     }
 
     
@@ -65,15 +79,24 @@
     const $sort = document.querySelector('.sort')
 
     $sort.addEventListener('click', () => {
-        $divs.sort((a, b) => a.innerText > b.innerText ? 1 : -1)
-        render()
+        $divs.sort((a, b) => a.innerText - b.innerText)
+        renderSort()
     })
 
     $reduce.addEventListener('click', () => {
-        $divs.reduce(a)
+        let sum = $divs.reduce((acc, val) => {
+            return Number(acc) + Number(val.innerText)
+        }, 0)
+        renderReduce(sum)
     })
 
     $map.addEventListener('click', () => {
+        $divs.map(x => {
+            x.innerText = ''
+            x.style.backgroundColor = x.style.color
+            x.style.borderRadius = '50%'
+
+        })
 
     })
     
