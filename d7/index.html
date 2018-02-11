@@ -17,7 +17,38 @@
 
 </body>
 <script>
-    
+    const $wrapper = document.querySelector('.wrapper')
+    let $divs = []
+    reset()
+
+    function randy(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min
+    }
+
+    function reset() {
+        $wrapper.innerHTML = ''
+
+        $divs = Array(10).fill().map((x, index) => {
+            const $div = document.createElement("div")
+
+            const size = randy(50, 100)
+            const number = randy(1, 50)
+            const hue = randy(0, 360)
+            let column = randy(1, 11)
+
+            $div.style.width = '50px'
+            $div.style.height = '50px'
+            $div.style.lineHeight = '50px'
+            $div.style.fontSize = '50px'
+            $div.innerText = number
+            $div.style.color = `hsl(${hue}, 100%, 80%)`
+            $div.style.gridRow = index + 1
+            $div.style.gridColumn = column
+
+            return $wrapper.appendChild($div)
+        })
+    }
+
 
 
 </script>
