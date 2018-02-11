@@ -7,87 +7,22 @@ html, body {
     justify-content: space-around;
     background: #222222;
     font-family: 'Gill Sans', sans-serif;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .dropdown-wrapper {
     width: 450px;
-    height: 60px;
-    padding: 0 0 0 20px;
+    height: 50px;
+    padding: 0 20px;
     border-radius: 5px;
     color: #fff;
     box-sizing: border-box;
-    border: 1px solid #9b0db9;
+    background:#c748bc;
     animation: move 3s ease-in-out infinite;
     position: relative;
 }
 
-.dropdown-menu li {
-    padding: 10px 10px;
-    border-bottom:1px dotted #fff;
-    color:#e8f8ff; 
-    transition:all 0.3s;
-}
-
-.dropdown-menu li:hover {
-    background:#61ccfd;
-    padding-left:20px;
-}
-
-.dropdown-menu li:last-child {
-    border:none;
-}
-
-
-
-.wrapper {
-    text-align: center;
-    width: 600px;
-    height: 600px;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    grid-gap: 10px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-    text-align: left;
-    width: 132px;
-}
-  
-  .dropdown-menu {
-    cursor: pointer;
-    position: absolute;
-    text-indent: 10px;
-    line-height: 32px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(255,255,255, .9) inset, 0 1px 3px rgba(0,0,0, .1);
-    width: 100%;
-  }
-  
-  .dropdown-menu:after {
-    position: absolute;
-    right: 6px;
-    top: 15px;
-    content: '';
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 5px 4px 0 4px;
-    border-color: #555 transparent transparent transparent;
-  }
-  
-  .dropdown-menu,
-  .dropdown-menu a {
-    color: #333;
-    text-shadow: 0 1px #fff;
-  }
-  
-  .dropdown-toggle {
+.dropdown-toggle {
     font-size: 0;
     z-index: 1;
     cursor: pointer;
@@ -95,18 +30,33 @@ html, body {
     top: 0;
     border: none;
     padding: 0;
-    margin: 0 0 0 1px;
+    margin: 0;
     background: transparent;
-    text-indent: -10px;
-    height: 34px;
+    height: 50px;
     width: 100%;
-  }
+}
+
+.dropdown-title {
+    line-height: 50px;
+}
+
+.dropdown-title:after {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: white transparent transparent transparent;
+}
   
-  .dropdown-toggle:focus {
+.dropdown-toggle:focus {
     outline: 0;
-  }
+}
   
-  .dropdown-menu {
+.dropdown-menu {
     -webkit-transition: all .25s ease;
     -moz-transition: all .25s ease;
     -ms-transition: all .25s ease;
@@ -114,18 +64,19 @@ html, body {
     transition: all .25s ease;
     list-style-type: none;
     position: absolute;
-    top: 32px;
+    top: 200px;
+    left: 0;
     padding: 0;
     margin: 0;
     opacity: 0;
     visibility:hidden;
     border-radius: 3px;
-    text-indent: 10px;
+    /* text-indent: 10px; */
     line-height: 32px;
-    background-color: #eee;
+    /* background-color: #c762bf; */
     border: 1px solid #ccc;
-    width: 140px;
-  }
+    width: 450px;
+}
   
   .dropdown-menu li {
     display: block;
@@ -138,22 +89,32 @@ html, body {
   
   .dropdown-toggle:hover ~ .dropdown-menu,
   .dropdown-toggle:focus ~ .dropdown-menu {
-    background-color: #e8e8e8;
+    background-color: #c762bf;
   }
   
   .dropdown-toggle:focus ~ .dropdown-menu {
-    box-shadow: 0 1px 3px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, 0.8);
+    /* box-shadow: 0 1px 3px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, 0.8); */
     z-index: 2;
   }
   
-  .dropdown-toggle:focus ~ .dropdown-menu:after {
+  .dropdown-toggle:focus ~ .dropdown-title:after {
     border-width: 0 4px 5px 4px;
-    border-color: transparent transparent #555 transparent;
+    border-color: transparent transparent white transparent;
   }
   
   .dropdown-menu:hover,
   .dropdown-toggle:focus ~ .dropdown-menu {
     opacity: 1;
-    visibility:visible;
-    top: 42px;
+    visibility: visible;
+    top: 60px;
   }
+
+.wrapper {
+    text-align: center;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 10px;
+}
