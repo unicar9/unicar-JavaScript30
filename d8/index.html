@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <title>Array Manipulation</title>
+</head>
+
+<body>
+    <div class="left">
+        <div class="result"></div>
+        <div class="dropdown-wrapper">
+            <input class="dropdown-toggle" type="text">
+            <div class="dropdown-title">
+                Please select one operation you want to perform
+            </div>
+            <ul class="dropdown-menu">
+                <li class="every">Are all the numbers greater than 20?</li>
+                <li class="some">Are some of the numbers greater than 20?</li>
+                <li class="find">Find the first result that's greater than 20</li>
+                <li class="findIndex">Find the index of the first result that's greater than 20</li>
+            </ul>
+        </div>
+    </div>
+   
+
+    <div class="wrapper"></div>
+
+</body>
+<script>
+    const $wrapper = document.querySelector('.wrapper')
+    const $result = document.querySelector('.result')
+    let $divs = []
+    reset()
+
+    function randy(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min
+    }
+
+    function reset() {
+        $wrapper.innerHTML = ''
+
+        $divs = Array(100).fill().map((x, index) => {
+            const $div = document.createElement("div")
+
+            const number = randy(1, 100)
+            const hue = randy(0, 360)
+
+            $div.style.width = '50px'
+            $div.style.height = '50px'
+            $div.style.lineHeight = '50px'
+            $div.style.fontSize = '50px'
+            $div.innerText = number
+            $div.style.color = `hsl(${hue}, 100%, 80%)`
+
+            return $wrapper.appendChild($div)
+        })
+    }
+
+    function every() {
+        const result = $divs.every(x => +x.innerHTML > 20)
+        $result.innerHTML = result
+    }
+
+    function some() {
+        const result = $divs.some(x => +x.innerHTML > 20)
+        $result.innerHTML = result
+    }
+
+    function find() {
+        const result = $divs.find(x => +x.innerHTML > 20)
+        $result.innerHTML = result.innerText
+    }
+
+    function findIndex() {
+        const result = $divs.findIndex(x => +x.innerHTML > 20)
+        $result.innerHTML = result
+    }
+
+    const $every = document.querySelector('.every')
+    const $some = document.querySelector('.some')
+    const $find = document.querySelector('.find')
+    const $findIndex = document.querySelector('.findIndex')
+
+    $every.addEventListener('click', every)
+    $some.addEventListener('click', some)
+    $find.addEventListener('click', find)
+    $findIndex.addEventListener('click', findIndex)
+
+</script>
+
+</html>

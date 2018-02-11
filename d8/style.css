@@ -1,0 +1,140 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #222222;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 20px;
+}
+
+.dropdown-wrapper {
+    width: 450px;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 5px;
+    color: #fff;
+    box-sizing: border-box;
+    background:#c748bc;
+    animation: move 3s ease-in-out infinite;
+    position: relative;
+}
+
+.dropdown-toggle {
+    font-size: 0;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    height: 50px;
+    width: 100%;
+}
+
+.dropdown-title {
+    position: absolute;
+    z-index: 0;
+    line-height: 50px;
+}
+
+.dropdown-title:after {
+    position: absolute;
+    left: 410px;
+    top: 25px;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: white transparent transparent transparent;
+}
+  
+.dropdown-toggle:focus {
+    outline: 0;
+}
+  
+.dropdown-menu {
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+    list-style-type: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility:hidden;
+    border-radius: 3px;
+    text-indent: 20px;
+    line-height: 32px;
+    width: 450px;
+    font-size: 15px;
+    background-color: #c762bf;
+}
+  
+  .dropdown-menu li {
+    display: block;
+  }
+  
+  .dropdown-menu li:hover {
+    background: #e294dc;
+    cursor: pointer;
+  }
+  
+  
+  .dropdown-toggle:hover ~ .dropdown-menu,
+  .dropdown-toggle:focus ~ .dropdown-menu {
+    background-color: #c762bf;
+  }
+  
+  .dropdown-toggle:focus ~ .dropdown-title {
+    z-index: 2;
+  }
+  
+  .dropdown-toggle:focus ~ .dropdown-title:after {
+    border-width: 0 4px 5px 4px;
+    border-color: transparent transparent white transparent;
+  }
+  
+  .dropdown-menu:hover,
+  .dropdown-toggle:focus ~ .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 60px;
+  }
+
+.wrapper {
+    text-align: center;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 10px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    align-content: space-around;
+}
+
+.result {
+    width: 300px;
+    height: 100px;
+    color: #8e62c7;
+    font-size: 100px;
+    text-align: center;
+    line-height: 100px;
+}
