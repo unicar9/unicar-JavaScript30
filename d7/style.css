@@ -24,7 +24,7 @@ html, body {
 
 .dropdown-toggle {
     font-size: 0;
-    z-index: 10;
+    z-index: 1;
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -38,12 +38,14 @@ html, body {
 }
 
 .dropdown-title {
+    position: absolute;
+    z-index: 0;
     line-height: 50px;
 }
 
 .dropdown-title:after {
     position: absolute;
-    right: 10px;
+    left: 410px;
     top: 25px;
     content: '';
     width: 0px;
@@ -95,7 +97,7 @@ html, body {
   }
   
   .dropdown-toggle:focus ~ .dropdown-title {
-    z-index: 20;
+    z-index: 2;
   }
   
   .dropdown-toggle:focus ~ .dropdown-title:after {
