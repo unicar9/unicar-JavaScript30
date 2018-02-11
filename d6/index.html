@@ -11,27 +11,57 @@
 </head>
 
 <body>
-    <div class="panels">
-            <div class="panel panel1">
-                <p>ICING</p>
-            </div>
-            <div class="panel panel2">
-                <p>BORA BORA</p>
-            </div>
-            <div class="panel panel3">
-                <p>SAKURA</p>
-            </div>
-            <div class="panel panel4">
-                <p>MELON</p>
-            </div>
-            <div class="panel panel5">
-                <p>CRANBERRY</p>
-            </div>
-    </div>
+    <form class="search-form">
+        <input type="text" class="search" placeholder="Type a makeup product name or brand here...">
+        <ul class="suggestions">
+            <li>Lipstick</li>
+            <li>or Fountation</li>
+        </ul>
+    </form>
 
 </body>
 <script>
+    const endpoint = 'https://raw.githubusercontent.com/douMax/jsfun30/master/d6/products.json'
 
+    const products = [];
+    fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => products.push(...data));
+
+    function findMatches(wordToMatch, products) {
+        return products.filter(product => {
+
+            const regex = new RegExp(wordToMatch, 'gi');
+
+            if (product.brand) {
+                return product.brand.match(regex) || product.name.match(regex)
+            }       
+        });
+    }
+
+    function displayMatches() {
+        const matchArray = findMatches(this.value, products);
+       
+        const html = matchArray.map(product => {
+            const regex = new RegExp(this.value, 'gi');
+            console.log(this.value)
+            const brandName = product.brand.replace(regex, `<span class="hl">${this.value}</span>`);
+            const name = product.name.replace(regex, `<span class="hl">${this.value}</span>`);
+            return `
+            <li>
+                <span class="name">${brandName}, ${name}</span>
+                <span class="price">${product.price_sign}${product.price}</span>
+            </li>
+            `;
+        }).join('');
+        suggestions.innerHTML = html;
+    }
+
+    const searchInput = document.querySelector('.search');
+    const suggestions = document.querySelector('.suggestions');
+
+    searchInput.addEventListener('change', displayMatches);
+    searchInput.addEventListener('keyup', displayMatches);
 
 </script>
 

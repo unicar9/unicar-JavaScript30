@@ -1,69 +1,62 @@
-@import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
-
 html {
     box-sizing: border-box;
-    font-family:'Oxygen', sans-serif;
-    font-size: 80px;
-    font-weight: 700;
-}
-
-body {
-    margin: 0;
-}
-*, *:before, *:after {
+    background:#FFD9E8;
+    font-family:'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+  }
+  *, *:before, *:after {
     box-sizing: inherit;
-}
+  }
+  input {
+    width: 100%;
+    padding:10px;
+  }
 
-p {
-    filter: blur(3px);
-    transform: rotate(90deg);
-    transform-origin: right 39%;
-    color: #ffffff;
-    white-space: nowrap;
-    transition: all 0.7s cubic-bezier(0.42,-0.18, 0.6,-0.34) 0.7s;
-}
+  .search-form {
+    max-width: calc(100vw - 20%);
+    margin: auto;
+  }
 
-.panels {
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-}
+  input.search {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 35px;
+    border-bottom: 3px solid #7F4A88;
+    z-index: 2;
+    color: #7F4A88;
+  }
 
-.panel {
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    overflow: hidden;
-    transition: flex 0.7s ease-in-out;
-}
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(127, 74, 136, 0.5);
+  }
 
-.panel:hover {
-    flex: 5;
-}
 
-.panel:hover p {
-    transform-origin: bottom;
-    transform: rotate(0deg);
-    filter: none;
-}
+  .suggestions {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
 
-.panel1 {
-    background-color: #dae9e4;
-}
+  .suggestions li {
+    background:white;
+    list-style: none;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+    margin:0;
+    padding:20px;
+    transition:background 0.2s;
+    display:flex;
+    justify-content:space-between;
+    text-transform: capitalize;
+  }
 
-.panel2 {
-    background-color: #8bcbc8;
-}
+  span.price {
+    font-size: 15px;
+  }
 
-.panel3 {
-    background-color: #ecc7c0;
-}
-
-.panel4 {
-    background-color: #fdae84;
-}
-
-.panel5 {
-    background-color: #3c2e3d;
-}
+  .hl {
+    background:#DE95BA;
+  }
