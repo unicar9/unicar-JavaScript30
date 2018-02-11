@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
+
+html {
+    box-sizing: border-box;
+    font-family:'Oxygen', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+body {
+    margin: 0;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+p {
+    filter: blur(3px);
+    transform: rotate(90deg);
+    transform-origin: right 39%;
+    color: #ffffff;
+    white-space: nowrap;
+    transition: all 0.7s cubic-bezier(0.42,-0.18, 0.6,-0.34) 0.7s;
+}
+
+.panels {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: flex 0.7s ease-in-out;
+}
+
+.panel:hover {
+    flex: 5;
+}
+
+.panel:hover p {
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    filter: none;
+}
+
+.panel1 {
+    background-color: #dae9e4;
+}
+
+.panel2 {
+    background-color: #8bcbc8;
+}
+
+.panel3 {
+    background-color: #ecc7c0;
+}
+
+.panel4 {
+    background-color: #fdae84;
+}
+
+.panel5 {
+    background-color: #3c2e3d;
+}
