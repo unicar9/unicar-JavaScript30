@@ -10,6 +10,58 @@ html, body {
     font-size: 15px;
 }
 
+.container {
+    color: #55e4c5;
+    width: 450px;
+    height: 60px;
+    padding:0 0 0 20px;
+    border-radius:5px;
+    color: #fff;
+    box-sizing:border-box;
+    border:1px solid #9b0db9;
+    animation: move 3s ease-in-out infinite;
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    right:0;
+    top:70px;
+    width: 228px;
+    cursor: pointer;
+    opacity:0;
+    transform-style: preserve-3d;
+    transform:rotatey(180deg) rotateX(5deg) translatey(100px);
+    backface-visibility: hidden;
+    background:linear-gradient(#4dc2f8 ,#0d82b9);
+    border:2px solid #0d82b9;
+    border-radius:10px;
+    transition:all 0.8s;
+    z-index:5;
+    overflow:hidden;
+}
+
+.menu li {
+    padding: 10px 10px;
+    border-bottom:1px dotted #fff;
+    color:#e8f8ff; 
+    transition:all 0.3s;
+}
+
+.menu li:hover {
+    background:#61ccfd;
+    padding-left:20px;
+}
+
+.menu li:last-child {
+    border:none;
+}
+
+.showMenu{
+    opacity:1;
+   transform:rotateX(0deg) translatey(0px);
+ }
+
 .wrapper {
     text-align: center;
     width: 600px;
