@@ -11,24 +11,29 @@
 </head>
 
 <body>
-    <div class="dropdown-wrapper">
-        <input class="dropdown-toggle" type="text">
-        <div class="dropdown-title">
-            Please select one operation you want to perform
+    <div class="left">
+        <div class="result"></div>
+        <div class="dropdown-wrapper">
+            <input class="dropdown-toggle" type="text">
+            <div class="dropdown-title">
+                Please select one operation you want to perform
+            </div>
+            <ul class="dropdown-menu">
+                <li class="every">Are all the numbers greater than 20?</li>
+                <li class="some">Are some of the numbers greater than 20?</li>
+                <li class="find">Find the first result that's greater than 20</li>
+                <li class="findIndex">Find the index of the first result that's greater than 20</li>
+            </ul>
         </div>
-        <ul class="dropdown-menu">
-            <li class="every">Are all the numbers greater than 20?</li>
-            <li class="some">Find all the numbers greater than 20</li>
-            <li class="find">Find the first result that's greater than 20</li>
-            <li class="findIndex">Find the index of the first result that's greater than 20</li>
-        </ul>
     </div>
+   
 
     <div class="wrapper"></div>
 
 </body>
 <script>
     const $wrapper = document.querySelector('.wrapper')
+    const $result = document.querySelector('.result')
     let $divs = []
     reset()
 
@@ -57,23 +62,34 @@
     }
 
     function every() {
-        $divs.every(x => +x.innerHTML > 20)
+        const result = $divs.every(x => +x.innerHTML > 20)
+        $result.innerHTML = result
     }
 
     function some() {
-        $divs.every(x => +x.innerHTML > 20)
+        const result = $divs.some(x => +x.innerHTML > 20)
+        $result.innerHTML = result
     }
+
     function find() {
-        $divs.every(x => +x.innerHTML > 20)
+        const result = $divs.find(x => +x.innerHTML > 20)
+        $result.innerHTML = result.innerText
     }
+
     function findIndex() {
-        $divs.every(x => +x.innerHTML > 20)
+        const result = $divs.findIndex(x => +x.innerHTML > 20)
+        $result.innerHTML = result
     }
 
+    const $every = document.querySelector('.every')
+    const $some = document.querySelector('.some')
+    const $find = document.querySelector('.find')
+    const $findIndex = document.querySelector('.findIndex')
 
-
-
-
+    $every.addEventListener('click', every)
+    $some.addEventListener('click', some)
+    $find.addEventListener('click', find)
+    $findIndex.addEventListener('click', findIndex)
 
 </script>
 
