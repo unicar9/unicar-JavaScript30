@@ -24,10 +24,11 @@ html, body {
 
 .dropdown-toggle {
     font-size: 0;
-    z-index: 1;
+    z-index: 10;
     cursor: pointer;
     position: absolute;
     top: 0;
+    left: 0;
     border: none;
     padding: 0;
     margin: 0;
@@ -64,18 +65,18 @@ html, body {
     transition: all .25s ease;
     list-style-type: none;
     position: absolute;
-    top: 200px;
+    top: 50px;
     left: 0;
     padding: 0;
     margin: 0;
     opacity: 0;
     visibility:hidden;
     border-radius: 3px;
-    /* text-indent: 10px; */
+    text-indent: 20px;
     line-height: 32px;
-    /* background-color: #c762bf; */
-    border: 1px solid #ccc;
     width: 450px;
+    font-size: 15px;
+    background-color: #c762bf;
 }
   
   .dropdown-menu li {
@@ -83,7 +84,8 @@ html, body {
   }
   
   .dropdown-menu li:hover {
-    background: #e8e8e8;
+    background: #e294dc;
+    cursor: pointer;
   }
   
   
@@ -92,9 +94,8 @@ html, body {
     background-color: #c762bf;
   }
   
-  .dropdown-toggle:focus ~ .dropdown-menu {
-    /* box-shadow: 0 1px 3px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, 0.8); */
-    z-index: 2;
+  .dropdown-toggle:focus ~ .dropdown-title {
+    z-index: 20;
   }
   
   .dropdown-toggle:focus ~ .dropdown-title:after {
