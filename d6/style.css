@@ -1,6 +1,6 @@
 html {
     box-sizing: border-box;
-    background:#ffc600;
+    background:#FFD9E8;
     font-family:'helvetica neue';
     font-size: 20px;
     font-weight: 200;
@@ -10,27 +10,27 @@ html {
   }
   input {
     width: 100%;
-    padding:20px;
+    padding:10px;
   }
 
   .search-form {
-    max-width:400px;
-    margin:50px auto;
+    max-width: calc(100vw - 20%);
+    margin: auto;
   }
 
   input.search {
-    margin: 0;
-    text-align: center;
-    outline:0;
-    border: 10px solid #F7F7F7;
-    width: 120%;
-    left: -10%;
-    position: relative;
-    top: 10px;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 35px;
+    border-bottom: 3px solid #7F4A88;
     z-index: 2;
-    border-radius: 5px;
-    font-size: 40px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+    color: #7F4A88;
+  }
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(127, 74, 136, 0.5);
   }
 
 
@@ -38,8 +38,8 @@ html {
     margin: 0;
     padding: 0;
     position: relative;
-    /*perspective:20px;*/
   }
+
   .suggestions li {
     background:white;
     list-style: none;
@@ -53,19 +53,10 @@ html {
     text-transform: capitalize;
   }
 
-  .suggestions li:nth-child(even) {
-    transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-    background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
-  }
-  .suggestions li:nth-child(odd) {
-    transform: perspective(100px) rotateX(-3deg) translateY(3px);
-    background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
-  }
-
   span.price {
     font-size: 15px;
   }
 
   .hl {
-    background:#ffc600;
+    background:#DE95BA;
   }
