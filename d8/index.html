@@ -11,86 +11,66 @@
 </head>
 
 <body>
-    <div class="left">
-        <div class="result"></div>
-        <div class="dropdown-wrapper">
-            <input class="dropdown-toggle" type="text">
-            <div class="dropdown-title">
-                Please select one operation you want to perform
-            </div>
-            <ul class="dropdown-menu">
-                <li class="every">Are all the numbers greater than 20?</li>
-                <li class="some">Are some of the numbers greater than 20?</li>
-                <li class="find">Find the first result that's greater than 20</li>
-                <li class="findIndex">Find the index of the first result that's greater than 20</li>
-            </ul>
-        </div>
-    </div>
-   
-
-    <div class="wrapper"></div>
-
+    <canvas id="draw" width="800" height="800"></canvas>
 </body>
 <script>
-    const $wrapper = document.querySelector('.wrapper')
-    const $result = document.querySelector('.result')
-    let $divs = []
-    reset()
+    const canvas = document.querySelector('#draw');
+    const ctx = canvas.getContext('2d');
 
-    function randy(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.strokeStyle = '#BADA55';
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 100;
+    // ctx.globalCompositeOperation = 'overlay';
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let direction = true;
+
+    function draw(e) {
+    if (!isDrawing) return; // stop the fn from running when they are not moused down
+    console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    // start from
+    ctx.moveTo(lastX, lastY);
+    // go to
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    hue++;
+    if (hue >= 360) {
+        hue = 0;
+    }
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+        direction = !direction;
     }
 
-    function reset() {
-        $wrapper.innerHTML = ''
-
-        $divs = Array(100).fill().map((x, index) => {
-            const $div = document.createElement("div")
-
-            const number = randy(1, 100)
-            const hue = randy(0, 360)
-
-            $div.style.width = '50px'
-            $div.style.height = '50px'
-            $div.style.lineHeight = '50px'
-            $div.style.fontSize = '50px'
-            $div.innerText = number
-            $div.style.color = `hsl(${hue}, 100%, 80%)`
-
-            return $wrapper.appendChild($div)
-        })
+    if(direction) {
+        ctx.lineWidth++;
+    } else {
+        ctx.lineWidth--;
     }
 
-    function every() {
-        const result = $divs.every(x => +x.innerHTML > 20)
-        $result.innerHTML = result
     }
 
-    function some() {
-        const result = $divs.some(x => +x.innerHTML > 20)
-        $result.innerHTML = result
-    }
+    canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
 
-    function find() {
-        const result = $divs.find(x => +x.innerHTML > 20)
-        $result.innerHTML = result.innerText
-    }
 
-    function findIndex() {
-        const result = $divs.findIndex(x => +x.innerHTML > 20)
-        $result.innerHTML = result
-    }
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 
-    const $every = document.querySelector('.every')
-    const $some = document.querySelector('.some')
-    const $find = document.querySelector('.find')
-    const $findIndex = document.querySelector('.findIndex')
-
-    $every.addEventListener('click', every)
-    $some.addEventListener('click', some)
-    $find.addEventListener('click', find)
-    $findIndex.addEventListener('click', findIndex)
-
+    
 </script>
 
 </html>
