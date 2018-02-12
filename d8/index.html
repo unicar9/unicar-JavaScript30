@@ -66,6 +66,14 @@
         points.push({ x: e.offsetX, y: e.offsetY });
     });
 
+    window.addEventListener('keydown', (e) => {
+        console.log(e)
+        if (e.code === 'Space') {
+            points = []
+            isDrawing = !isDrawing;
+            points.push({ x: e.offsetX, y: e.offsetY });
+        }
+    });
 
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', () => {
