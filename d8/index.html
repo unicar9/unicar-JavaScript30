@@ -21,9 +21,8 @@
     canvas.height = window.innerHeight;
 
     ctx.strokeStyle = '#BADA55';
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.lineWidth = 100;
+    ctx.lineJoin = ctx.lineCap = 'round';
+    ctx.lineWidth = 1;
     // ctx.globalCompositeOperation = 'overlay';
 
     let isDrawing = false;
@@ -31,38 +30,56 @@
     let lastY = 0;
     let hue = 0;
     let direction = true;
+    let points = []
 
     function draw(e) {
-    if (!isDrawing) return; // stop the fn from running when they are not moused down
-    console.log(e);
-    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-    ctx.beginPath();
-    // start from
-    ctx.moveTo(lastX, lastY);
-    // go to
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+        if (!isDrawing) return; 
 
-    hue++;
-    if (hue >= 360) {
-        hue = 0;
-    }
-    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
-        direction = !direction;
-    }
+        points.push({ x: e.offsetX, y: e.offsetY })
 
-    if(direction) {
-        ctx.lineWidth++;
-    } else {
-        ctx.lineWidth--;
-    }
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        ctx.beginPath();
+        // start from
+        ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+        // go to
+        ctx.lineTo(points[points.length - 1].x, points[points.length - 1].yY);
+        ctx.stroke();
+        
+        points.forEach(p, i => {
+            dx = points[i].x - points[points.length - 1].x;
+            dy = points[i].y - points[points.length - 1].y;
+            d = dx * dx + dy * dy
+
+            if (d < 1000) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+                ctx.moveTo(points[points.length-1].x + (dx * 0.2), points[points.length-1].y + (dy * 0.2));
+                ctx.lineTo(points[i].x - (dx * 0.2), points[i].y - (dy * 0.2));
+                ctx.stroke();
+            }
+        })
+
+        hue++;
+        if (hue >= 360) {
+            hue = 0;
+        }
+        if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+            direction = !direction;
+        }
+
+        if(direction) {
+            ctx.lineWidth++;
+        } else {
+            ctx.lineWidth--;
+        }
 
     }
 
     canvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+        points = []
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        points.push({ x: e.offsetX, y: e.offsetY });
     });
 
 
