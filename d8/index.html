@@ -8,9 +8,29 @@
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
     <title>Array Manipulation</title>
+    <style>
+        .info {
+            color:azure;
+            font-family: 'Gill Sans', sans-serif;
+            font-size: 1em;
+            width: calc(100vw - 60%);
+            margin: 0 auto;
+            text-align: center;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 
 <body style="background: black">
+
+    <div class="info">
+        <p>Simply click down and drag to draw</p>
+        <p>Or press Spacebar to enable or disable drawing tool</p>
+    </div>
     <canvas id="draw" width="800" height="800"></canvas>
 </body>
 <script>
