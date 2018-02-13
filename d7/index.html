@@ -19,10 +19,10 @@
                 Please select one operation you want to perform
             </div>
             <ul class="dropdown-menu">
-                <li class="every">Are all the numbers greater than 20?</li>
-                <li class="some">Are some of the numbers greater than 20?</li>
-                <li class="find">Find the first result that's greater than 20</li>
-                <li class="findIndex">Find the index of the first result that's greater than 20</li>
+                <li class="every">Are all the numbers greater than 50?</li>
+                <li class="some">Are some of the numbers greater than 50?</li>
+                <li class="find">Find the first result that's greater than 50</li>
+                <li class="findIndex">Find the index of the first result that's greater than 50</li>
             </ul>
         </div>
     </div>
@@ -62,22 +62,22 @@
     }
 
     function every() {
-        const result = $divs.every(x => +x.innerHTML > 20)
+        const result = $divs.every(x => +x.innerHTML > 50)
         $result.innerHTML = result
     }
 
     function some() {
-        const result = $divs.some(x => +x.innerHTML > 20)
+        const result = $divs.some(x => +x.innerHTML > 50)
         $result.innerHTML = result
     }
 
     function find() {
-        const result = $divs.find(x => +x.innerHTML > 20)
+        const result = $divs.find(x => +x.innerHTML > 50)
         $result.innerHTML = result.innerText
     }
 
     function findIndex() {
-        const result = $divs.findIndex(x => +x.innerHTML > 20)
+        const result = $divs.findIndex(x => +x.innerHTML > 50)
         $result.innerHTML = result
     }
 
