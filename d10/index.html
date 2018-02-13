@@ -7,105 +7,71 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
-    <title>Array Manipulation</title>
-    <style>
-        .info {
-            color:azure;
-            font-family: 'Gill Sans', sans-serif;
-            font-size: 1em;
-            width: calc(100vw - 60%);
-            margin: 0 auto;
-            text-align: center;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
+    <title></title>
 </head>
 
-<body style="background: black">
+<body>
 
-    <div class="info">
-        <p>Simply click down and drag to draw</p>
-        <p>Or press Spacebar to enable or disable drawing tool</p>
-    </div>
-    <canvas id="draw" width="800" height="800"></canvas>
+    <div class="inbox">
+        <div class="item">
+          <input type="checkbox">
+          <p>This is an inbox layout.</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Check one item</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Hold down your Shift key</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Check a lower item</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Everything inbetween should also be set to checked</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Try do it without any libraries</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Just regular JavaScript</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Good Luck!</p>
+        </div>
+        <div class="item">
+          <input type="checkbox">
+          <p>Don't forget to tweet your result!</p>
+        </div>
+      </div>
 </body>
 <script>
-    const canvas = document.querySelector('#draw');
-    const ctx = canvas.getContext('2d');
+    const checkboxes = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'));
+    let lastChecked;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function handleCheck(e) {
+    // Check if they had the shift key down
+    // AND check that they are checking it
+    if (e.shiftKey && this.checked) {
 
-    ctx.strokeStyle = '#BADA55';
-    ctx.lineJoin = ctx.lineCap = 'round';
-    ctx.lineWidth = 1;
-    // ctx.globalCompositeOperation = 'overlay';
+        console.log(myArray.indexOf(this), myArray.indexOf(lastChecked))
 
-    let isDrawing = false;
-    let hue = 0;
-    let points = []
+        const index1 = myArray.indexOf(this)
+        const index2 = myArray.indexOf(lastChecked)
 
-    function draw(e) {
-        if (!isDrawing) return; 
-
-        points.push({ x: e.offsetX, y: e.offsetY })
-
-        ctx.strokeStyle = `hsl(${hue % 360}, 100%, 50%)`;
-        ctx.beginPath();
-        // start from
-        ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
-        // go to
-        ctx.lineTo(points[points.length - 1].x, points[points.length - 1].yY);
-        ctx.stroke();
-
-        points.forEach((p, i) => {
-            dx = points[i].x - points[points.length - 1].x;
-            dy = points[i].y - points[points.length - 1].y;
-            d = dx * dx + dy * dy
-
-            if (d < 2000) {
-                ctx.beginPath();
-                ctx.strokeStyle = `hsl(${hue % 360}, 100%, 50%)`;
-                ctx.moveTo(points[points.length-1].x + (dx * 0.2), points[points.length-1].y + (dy * 0.2));
-                ctx.lineTo(points[i].x - (dx * 0.2), points[i].y - (dy * 0.2));
-                ctx.stroke();
-            }
-        })
-
-        hue++;
-
+        checkboxes.filter((x, i) => i >= index1 && i <= index2 || i >= index2 && i <= index1)
+                  .map(x => x.checked = true)
+    }
+        lastChecked = this;
     }
 
-    canvas.addEventListener('mousedown', (e) => {
-        points = []
-        isDrawing = true;
-        points.push({ x: e.offsetX, y: e.offsetY });
-    });
-
-    window.addEventListener('keydown', (e) => {
-        console.log(e)
-        if (e.code === 'Space') {
-            points = []
-            isDrawing = !isDrawing;
-            points.push({ x: e.offsetX, y: e.offsetY });
-        }
-    });
-
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => {
-        isDrawing = false;
-        points = [];
-    });
-    canvas.addEventListener('mouseout', () => {
-        isDrawing = false;
-        points = [];
-    });
-
-    
+    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 </script>
 
 </html>
