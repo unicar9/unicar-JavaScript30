@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <title></title>
+    <title>Hold Shift to Check Multiple Checkboxes</title>
 </head>
 
 <body>
@@ -60,10 +59,10 @@
     // AND check that they are checking it
     if (e.shiftKey && this.checked) {
 
-        console.log(myArray.indexOf(this), myArray.indexOf(lastChecked))
+        console.log(checkboxes.indexOf(this), checkboxes.indexOf(lastChecked))
 
-        const index1 = myArray.indexOf(this)
-        const index2 = myArray.indexOf(lastChecked)
+        const index1 = checkboxes.indexOf(this)
+        const index2 = checkboxes.indexOf(lastChecked)
 
         checkboxes.filter((x, i) => i >= index1 && i <= index2 || i >= index2 && i <= index1)
                   .map(x => x.checked = true)
