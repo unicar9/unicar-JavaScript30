@@ -13,6 +13,9 @@
 
     <div class="inbox">
         <div class="item">
+          <input id="new-todo" type="text" placeholder="What are you up to? Press enter to add...">
+        </div>
+        <div class="item">
           <input type="checkbox">
           <p>This is an inbox layout.</p>
         </div>
@@ -51,7 +54,10 @@
       </div>
 </body>
 <script>
-    const checkboxes = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'));
+    let checkboxes = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'))
+    // console.log(checkboxes)
+    const $newTodo = document.querySelector('#new-todo');
+    const $inbox = document.querySelector('.inbox')
     let lastChecked;
 
     function handleCheck(e) {
@@ -70,7 +76,21 @@
         lastChecked = this;
     }
 
-    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+    function addNew(e) {
+        if (e.key === 'Enter' && this.value) {
+            const newItem = document.createElement('div')
+            newItem.className = 'item'
+            newItem.innerHTML = `<input type="checkbox"><p>${this.value}</p>`
+            $inbox.appendChild(newItem)
+
+            this.value = ''
+        }
+        checkboxes = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'))
+        checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+    }
+    
+    $newTodo.addEventListener('keypress', addNew);
+
 </script>
 
 </html>

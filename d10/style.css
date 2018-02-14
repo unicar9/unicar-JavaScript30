@@ -40,3 +40,19 @@ p {
   font-weight: 200;
   border-left: 4px double #FBA746;
 }
+
+#new-todo {
+  -webkit-appearance: none;
+  background-color: #FFFDE1;
+  border-width: 0;
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  flex: 1;
+  font-family: "helvetica neue";
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 200;
+  color: #7F7F7F;
+  border-radius: 5px 5px 0 0
+}
