@@ -1,14 +1,14 @@
 html {
   font-family: sans-serif;
-  background: #ffc600;
+  background: rgb(108, 105, 192);
 }
 
 .inbox {
-  max-width: 400px;
+  max-width: 30rem;
   margin: 50px auto;
-  background: white;
+  background: #FFFDE1;
   border-radius: 5px;
-  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .item {
@@ -22,8 +22,8 @@ html {
 }
 
 input:checked + p {
-  background: #f9f9f9;
   text-decoration: line-through;
+  text-decoration-color: #7F7F7F
 }
 
 input[type="checkbox"] {
@@ -38,5 +38,5 @@ p {
   font-family: "helvetica neue";
   font-size: 20px;
   font-weight: 200;
-  border-left: 1px solid #d1e2ff;
+  border-left: 4px double #FBA746;
 }
