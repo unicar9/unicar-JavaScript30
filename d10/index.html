@@ -70,10 +70,13 @@
         const index1 = checkboxes.indexOf(this)
         const index2 = checkboxes.indexOf(lastChecked)
 
+        console.log(index1, index2)
+
+    
         checkboxes.filter((x, i) => i >= index1 && i <= index2 || i >= index2 && i <= index1)
                   .map(x => x.checked = true)
     }
-        lastChecked = this;
+        lastChecked = this
     }
 
     function addNew(e) {
@@ -90,6 +93,7 @@
     }
     
     $newTodo.addEventListener('keypress', addNew);
+    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
 
 </script>
 
