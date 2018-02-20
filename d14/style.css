@@ -8,6 +8,10 @@ html, body {
     line-height: 10rem;
 }
 
+p {
+    line-height: 1rem;
+}
+
 
 .init-wrapper, .buttons, .copy-wrapper, .ref-wrapper {
     display: flex;
