@@ -41,6 +41,13 @@ function enableEdit() {
     })
 }
 
-$init.forEach(init => {
-    init.addEventListener('input', (e) => console.log(e.target.innerText))
+$init.forEach((x, i) => {
+    x.addEventListener('input', (e) => {
+        console.log(e)
+        init[i] = e.target.innerText
+
+        console.log(init)
+        addArray(copy, $copyWrapper)
+        addArray(ref, $refWrapper)
+    })
 })
