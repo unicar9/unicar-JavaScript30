@@ -31,14 +31,16 @@ html, body {
 .button {
     width: 10rem;
     height: 2rem;
-    border: 1px solid #A9DEF9;
+    border: 2px solid #A9DEF9;
     border-radius: 20px;
     margin: 2rem;
     line-height: 2rem;
-    transition: all .4s;
+    transition: all .4s ease;
     cursor: pointer;
 }
 
 .button:hover {
-    background: #A9DEF9;
+    box-shadow: inset 10rem 2rem 0 0 #70C1B3;
+    border: 2px solid #70C1B3;
+    color: #ffffff;
 }
