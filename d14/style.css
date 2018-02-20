@@ -12,7 +12,6 @@ p {
     line-height: 1rem;
 }
 
-
 .init-wrapper, .buttons, .copy-wrapper, .ref-wrapper {
     display: flex;
     align-items: center;
