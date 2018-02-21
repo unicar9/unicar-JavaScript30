@@ -1,12 +1,18 @@
 const endpoint = "https://api.tronalddump.io/random/quote"
-const $container = document.querySelector('.container')
+const $quote = document.querySelector('.quote')
+const $poo = document.querySelector('.poo')
+const $meh = document.querySelector('.meh')
 
-// const quotes = []
-// fetch(endpoint)
-//     .then(blob => blob.json())
-//     .then(data => {
-//         console.log(data)
-//     //   quotes.push(...data.data)
-//     //   console.log(quotes)
-//     //   console.log("Fetch down!!!!")
-//     })
+fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => $quote.innerText = data.value)
+
+function addQuote() {
+    fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => $quote.innerText = data.value)
+}
+
+
+$poo.addEventListener('click', addQuote)
+$meh.addEventListener('click', addQuote)
