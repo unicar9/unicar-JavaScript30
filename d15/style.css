@@ -82,4 +82,5 @@ hr {
 
 .buttons .em {
     display: none;
+    cursor: pointer;
 }
