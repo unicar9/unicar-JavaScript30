@@ -53,3 +53,20 @@ hr {
     margin: 0 auto;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+.info {
+    color: #643b1f;
+    font-size: 14px;
+}
+
+.fav-button {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: #643b1f;
+    color: white;
+    margin: 0 auto;
+    line-height: 2rem;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
