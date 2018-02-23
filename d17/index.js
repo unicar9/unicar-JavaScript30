@@ -1,20 +1,14 @@
-const $text = document.querySelector('.text')
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog']
 
-window.addEventListener('mousemove', ({clientX: x, clientY: y}) => {
-   
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
+function strip(bandName) {
+    return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+  
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
 
-    const ratio = Math.round((x - centerX) / (y - centerY))
+document.querySelector('#bands').innerHTML =
+  sortedBands
+    .map(band => `<li>${band}</li>`)
+    .join('');
 
-    function longShadow() {
-        const x = [...Array(200).keys()]
-       
-        return  y > centerY ? x.map(x => `${x * ratio}px ${x}px #3090A1`) : x.map(x => `-${x * ratio}px -${x}px #3090A1`)
-    }    
-
-    $text.style.textShadow = longShadow()
-
-})
-
-
+console.log(sortedBands)
