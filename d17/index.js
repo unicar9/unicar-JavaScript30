@@ -12,3 +12,14 @@ document.querySelector('#bands').innerHTML =
     .join('');
 
 console.log(sortedBands)
+
+const endpoint = 'https://raw.githubusercontent.com/douMax/jsfun30/master/d6/products.json'
+
+const products = []
+fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => {
+        products.push(...data)
+        console.log(products)
+    })
+
