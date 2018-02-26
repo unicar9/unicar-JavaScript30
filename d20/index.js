@@ -1,29 +1,22 @@
 const $maze = document.querySelector('.maze')
-
-const $cell = document.createElement('div')
-
-let $cells = []
-
-
-
-
+const $hero = document.querySelector('.hero')
 
 function reset() {
-    // $maze.innerHTML = ''
-
-    // $cells = Array(25).fill().map((x, index) => {
-    //     const $cell = document.createElement("div")
-
-    //     $cell.style.width = '50px'
-    //     $cell.style.height = '50px'
-    //     $cell.style.lineHeight = '50px'
-    //     $cell.style.fontSize = '50px'
-    //     $cell.style.background = '#333'
-    //     $cell.innerText = 5
-    //     $cell.style.color = `hsl(20, 100%, 80%)`
-
-    //     return $maze.appendChild($cell)
-    // })
+    $hero.style.gridArea = "5/2/6/3"
 }
 
 reset()
+
+function verticalMove(dir) {
+    const rowNow = $hero.style.gridRow.split(' / ')
+
+    $hero.style.gridRow = dir === 'up' ? `${+rowNow[0] - 1} / ${+rowNow[1] - 1}` : `${+rowNow[0] + 1} / ${+rowNow[1] + 1}` 
+}
+
+function horizontalMove(dir) {
+    const colNow = $hero.style.gridColumn.split(' / ')
+
+    const colNext = dir === 'left' ? `${+colNow[0] - 1} / ${+colNow[1] - 1}` : `${+colNow[0] + 1} / ${+colNow[1] + 1}`
+
+    
+}
