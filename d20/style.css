@@ -59,6 +59,12 @@ body {
   background-size: 100px;
 }
 
+.pin {
+  background: url(pin.png) no-repeat center center;
+  grid-area: 1 / 4 / 2 / 5;
+  background-size: 60px;
+}
+
 .shake {
   animation: shake 0.5s;
 }
