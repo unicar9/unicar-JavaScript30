@@ -5,13 +5,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #222222;
+  background: #444;
   font-family: 'Gill Sans', sans-serif;
   font-size: 20px;
 }
 
 .maze {
-  background: #355C7D;
+  background: #3AACD8;
   text-align: center;
   width: 600px;
   height: 600px;
@@ -29,19 +29,27 @@ body {
 }
 
 .c {
-  grid-area: 3 / 3 / 4 / 5;
+  grid-area: 3 / 3 / 4 / 4;
 }
 
 .d {
-  grid-area: 4 / 2 / 5 / 4;
+  grid-area: 3 / 4 / 4 / 5;
 }
 
 .e {
+  grid-area: 4 / 2 / 5 / 3;
+}
+
+.f {
+  grid-area: 4 / 3 / 5 / 4;
+}
+
+.g {
   grid-area: 5 / 2 / 6 / 3;
 }
 
 .path {
-  background: #F67280;
+  background: #FED3A8;
 }
 
 
@@ -51,4 +59,25 @@ body {
   background-size: 100px;
 }
 
+.shake {
+  animation: shake 0.5s;
+}
 
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
