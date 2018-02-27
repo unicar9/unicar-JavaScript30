@@ -18,5 +18,4 @@ function horizontalMove(dir) {
 
     const colNext = dir === 'left' ? `${+colNow[0] - 1} / ${+colNow[1] - 1}` : `${+colNow[0] + 1} / ${+colNow[1] + 1}`
 
-    
 }

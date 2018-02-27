@@ -18,31 +18,26 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: ". . . a ."
-                       ". . . b ."
-                       ". . c c ."
-                       ". d d . ."
-                       ". e . . .";
 }
 
 .a {
-  grid-area: a;
+  grid-area: 1 / 4 / 2 / 5;
 }
 
 .b {
-  grid-area: b;
+  grid-area: 2 / 4 / 3 / 5;
 }
 
 .c {
-  grid-area: c;
+  grid-area: 3 / 3 / 4 / 5;
 }
 
 .d {
-  grid-area: d;
+  grid-area: 4 / 2 / 5 / 4;
 }
 
 .e {
-  grid-area: e;
+  grid-area: 5 / 2 / 6 / 3;
 }
 
 .path {
