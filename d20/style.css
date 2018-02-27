@@ -47,7 +47,7 @@ body {
 
 .hero {
   background: url(hero.png) no-repeat center center;
-  grid-area: e;
+  grid-area: 5 / 2 / 6 / 3;
   background-size: 100px;
 }
 
