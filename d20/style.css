@@ -87,3 +87,23 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
+
+@keyframes spindown {
+  0% {
+    transform: translate(0, 0) rotate3d(1, 2, 1, 0);
+  }
+  
+  100% {
+    transform: translate(0, 100vh) rotate3d(1, 2, 1, 3600deg);
+  }
+}
+
+.confetti {
+  will-change: transform, filter;
+  background: red;
+  width: 10px;
+  height: 10px;
+  animation: spindown infinite 3s linear
+}
+
+

@@ -8,11 +8,14 @@ function reset() {
     $hero.style.gridArea = "5/2/6/3"
 }
 
+function randy(min, max) {
+    return Math.random() * (max - min) + min
+}
+
 function checkIfOnPath(gridArea) {
     if (pathGridAreas.includes(gridArea)) return true
     return false
 }
-
 
 function move(dir) {
     const areaNow = $hero.style.gridArea.split(' / ')
@@ -65,6 +68,26 @@ recognition.onresult = e => {
     
     console.log(order)
 }
+
+function showConfetti() {
+
+    $divs = Array(100).fill().map((x, index) => {
+        const $div = document.createElement(`<div class="confetti" style="animation-delay: ${delay}s; background: ${color}; animation-duration: ${speed}s; width: ${size}px; height: ${size}px;"></div>`)
+
+        const number = randy(1, 100)
+        const hue = randy(0, 360)
+
+        $div.style.width = '50px'
+        $div.style.height = '50px'
+        $div.style.lineHeight = '50px'
+        $div.style.fontSize = '50px'
+        $div.innerText = number
+        $div.style.color = `hsl(${hue}, 100%, 80%)`
+
+        return $wrapper.appendChild($div)
+    })
+}
+
 
 
 reset()
