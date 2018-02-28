@@ -1,6 +1,7 @@
 const $maze = document.querySelector('.maze')
 const $hero = document.querySelector('.hero')
 const $pathDivs = document.querySelectorAll('.path')
+const $pin = document.querySelector('.pin')
 const pathGridAreas = Array.from($pathDivs).map(a => window.getComputedStyle(a).gridArea)
 
 
@@ -8,8 +9,8 @@ function reset() {
     $hero.style.gridArea = "5/2/6/3"
 }
 
-function randy(min, max) {
-    return Math.random() * (max - min) + min
+function randy(min = 0, max) {
+    return Math.floor(Math.random() * (max - min)) + min
 }
 
 function checkIfOnPath(gridArea) {
@@ -44,6 +45,12 @@ function move(dir) {
         $hero.style.gridArea = areaNow.join(' / ')
         $hero.classList.add('shake')
     }
+
+    if (areaNext === '1 / 4 / 2 / 5') {
+        showConfetti()
+        $pin.style.display = 'none'
+        geoFindMe()
+    }
 }
 
 function orderToMove(dir, order) {
@@ -67,28 +74,64 @@ recognition.onresult = e => {
     orderToMove("right", order)
     
     console.log(order)
+
+    order.includes('monster') && cheats()
+
 }
+
+const createElement = template => Object.assign(
+    document.createElement('div'), { innerHTML: template } 
+).firstElementChild
 
 function showConfetti() {
 
     $divs = Array(100).fill().map((x, index) => {
-        const $div = document.createElement(`<div class="confetti" style="animation-delay: ${delay}s; background: ${color}; animation-duration: ${speed}s; width: ${size}px; height: ${size}px;"></div>`)
+        const color = `hsl(${randy(0, 360)}, 100%, 80%)`
+        const delay = Math.random() * 9
+        const left = randy(0, 100)
 
-        const number = randy(1, 100)
-        const hue = randy(0, 360)
+        const $div = createElement(`<div class="confetti" style="animation-delay: ${delay}s; background: ${color};   left: ${left}%";></div>`)
 
-        $div.style.width = '50px'
-        $div.style.height = '50px'
-        $div.style.lineHeight = '50px'
-        $div.style.fontSize = '50px'
-        $div.innerText = number
-        $div.style.color = `hsl(${hue}, 100%, 80%)`
+        console.log($div)
 
-        return $wrapper.appendChild($div)
+        return document.body.appendChild($div)
     })
 }
 
+function geoFindMe() {
+    const output = document.querySelector('.geo')
+  
+    if (!navigator.geolocation){
+      output.innerHTML = "<p>Geolocation is not supported by your browser</p>"
+      return
+    }
+  
+    function success(position) {
+      output.innerHTML = ''
+    
+      const latitude  = position.coords.latitude
+      const longitude = position.coords.longitude
+  
+      const img = new Image()
+      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false"
+  
+      output.appendChild(img)
+    }
+  
+    function error() {
+      output.innerHTML = "Unable to retrieve your location"
+    }
+  
+    output.innerHTML = "<p>Locating…</p>"
+  
+    navigator.geolocation.getCurrentPosition(success, error)
+}
 
+function cheats() {
+    ['up', 'right', 'up', 'right', 'up', 'up'].map((dir, i) => {
+        setTimeout(() => move(dir), i * 500 + 500)
+    })
+}
 
 reset()
 $hero.addEventListener('animationend', (e) => $hero.classList.remove('shake'))
