@@ -99,11 +99,22 @@ body {
 }
 
 .confetti {
+  position: absolute;
+  top: -10px;
   will-change: transform, filter;
   background: red;
   width: 10px;
   height: 10px;
   animation: spindown infinite 3s linear
+}
+
+.geo {
+  color: #FED3A8;
+  width: 30%;
+}
+
+.geo img {
+  border-radius: 50%;
 }
 
 
