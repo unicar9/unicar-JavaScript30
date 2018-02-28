@@ -90,7 +90,7 @@ function showConfetti() {
         const delay = Math.random() * 9
         const left = randy(0, 100)
 
-        const $div = createElement(`<div class="confetti" style="animation-delay: ${delay}s; background: ${color};   left: ${left}%";></div>`)
+        const $div = createElement(`<div class="confetti" style="animation-delay: ${delay}s; background: ${color}; left: ${left}%";></div>`)
 
         console.log($div)
 
