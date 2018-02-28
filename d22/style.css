@@ -1,0 +1,32 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  background-image: linear-gradient(to right top, #0d1a67, #301f81, #512199, #751daf, #9b0bc3);
+}
+
+
+.photobooth {
+  width: 90vw;
+  height: 90vh;
+  border-radius: 10px;
+  background: white;
+  margin: 10px auto;
+}
+
+.photo {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+
+.player {
+  width: 100px;
+}
