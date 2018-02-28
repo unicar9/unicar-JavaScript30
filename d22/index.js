@@ -61,6 +61,7 @@ function highlightHover(e) {
 window.addEventListener('keydown', (e) => {
     console.log(e)
     if (e.code === 'Space') {
+        e.preventDefault()
         is3dMode = !is3dMode
         console.log(is3dMode)
     }
