@@ -101,7 +101,7 @@ body {
 .confetti {
   position: absolute;
   top: -10px;
-  will-change: transform, filter;
+  will-change: transform;
   background: red;
   width: 10px;
   height: 10px;
