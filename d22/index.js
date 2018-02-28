@@ -25,6 +25,8 @@ function highlightLink() {
 function highlightHover() {
     const hoverCoords = this.getBoundingClientRect()
     console.log(hoverCoords)
+
+    
 }
 
 triggers.forEach(a => a.addEventListener('mouseenter', highlightLink))
