@@ -1,7 +1,7 @@
 :root {
-  --color1: #00dbde;
-  --color2: #fc00ff;
-  --angle: 0deg;
+  --ty: 0deg;
+  --rx: 0deg;
+  --ry: 0deg;
 }
 
 html {
@@ -18,6 +18,8 @@ body {
   margin: 0; /* Important! */
   font-family: "Gill Sans", sans-serif;
   font-size: 1.5rem;
+  /* transform-style: preserve-3d; */
+  /* transform: perspective(800px);  */
 }
 
 .wrapper {
@@ -68,6 +70,21 @@ a {
       hsla(35, 95%, 55%, 0) 70%
     );
 }
+
+/* .highlight:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    position: relative;
+    display: inline-block;
+    content: attr(data-title);
+    transition: transform .2s ease; 
+    font-weight: bold;
+    letter-spacing: .01em;
+    will-change: transform;
+    transform:
+        translateY(var(--ty))
+        rotateX(var(--rx))
+        rotateY(var(--ry));
+} */
 
 .menu {
   padding: 0;
