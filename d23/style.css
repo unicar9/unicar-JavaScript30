@@ -25,9 +25,6 @@ body {
 .title {
   font-size: 120px;
   margin-bottom: 10px;
-}
-
-.shiju.active {
   opacity: 1;
 }
 
@@ -38,6 +35,6 @@ body {
   color: white;
   font-size: 30px;
   line-height: 1;
-  background: rgb(119, 219, 161);
+  background: #3ea170;
   cursor: pointer;
 }
