@@ -18,7 +18,7 @@ function getVideo() {
 
 getVideo()  
 
-// let prevFrame = []
+let prevFrame = []
 
 let frames = []
 
@@ -31,19 +31,38 @@ function paintToCanvas() {
     
     
     setInterval(() => {
-        ctx.globalCompositeOperation = 'destination-over'
+        // ctx.globalCompositeOperation = 'destination-over'
    
         ctx.drawImage(video, 0, 0, width, height)
         // ctx.globalCompositeOperation = 'overlay'
         let currentImageData = ctx.getImageData(0, 0, width, height)
+        let currentFrame = currentImageData.data
 
-        frames.push(currentImageData)
+        for (let i = 0; i < currentFrame.length; i+=4) {
+            let currentR = currentFrame[i]
+            const prevR = prevFrame[i]
 
-        frames.splice(-26, frames.length - 25)
+
+            if ( prevR && Math.abs(currentR - prevR) > 35) {
+                currentFrame[i] = 0
+                currentFrame[i + 1] = 255
+                currentFrame[i + 2] = 0
+            } 
+            
+        }
+
+        ctx.putImageData(currentImageData, 0, 0)
+
+        prevFrame = currentFrame
+        
+
+        // frames.push(currentImageData)
+
+        // frames.splice(-26, frames.length - 25)
 
         // let currentFrame = imageData.data
         
-        for (let i = 0; i < frames[0].data.length; i+=4) {
+        // for (let i = 0; i < frames[0].data.length; i+=4) {
             
             // let currentR = currentFrame[i]
             // let prevR = prevFrame[i]
@@ -54,10 +73,10 @@ function paintToCanvas() {
                 // currentFrame[i + 2] = currentFrame[i + 2] * 0.5
             // }
             
-            frames[0].data[i + 0] = frames[0].data[i + 0] + 200
-            frames[0].data[i + 1] = frames[0].data[i + 1] - 200
-            frames[0].data[i + 2] = frames[0].data[i + 2] - 200
-            frames[0].data[i + 3] = frames[0].data[i + 3] * 0.9
+            // frames[0].data[i + 0] = frames[0].data[i + 0] + 200
+            // frames[0].data[i + 1] = frames[0].data[i + 1] - 200
+            // frames[0].data[i + 2] = frames[0].data[i + 2] - 200
+            // frames[0].data[i + 3] = frames[0].data[i + 3] * 0.9
 
             // frames[5].data[i + 0] = frames[5].data[i + 0] - 200
             // frames[5].data[i + 1] = frames[5].data[i + 1] + 200
@@ -68,20 +87,20 @@ function paintToCanvas() {
             // frames[10].data[i + 1] = frames[10].data[i + 1] - 200
             // frames[10].data[i + 2] = frames[10].data[i + 2] + 200
             // frames[10].data[i + 3] = frames[10].data[i + 3] * 0.9
-        }
+        // }
 
-        if (frames[5]) {
-            for (let i = 0; i < frames[5].data.length; i+=4) {
+        // if (frames[5]) {
+        //     for (let i = 0; i < frames[5].data.length; i+=4) {
             
-                frames[5].data[i + 0] = frames[5].data[i + 0] + 100
-                frames[5].data[i + 1] = frames[5].data[i + 1] * 0.5
-                frames[5].data[i + 2] = frames[5].data[i + 2] * 0.5
-                frames[5].data[i + 3] = frames[5].data[i + 3] * 0.2
-            }
+        //         frames[5].data[i + 0] = frames[5].data[i + 0] + 100
+        //         frames[5].data[i + 1] = frames[5].data[i + 1] * 0.5
+        //         frames[5].data[i + 2] = frames[5].data[i + 2] * 0.5
+        //         frames[5].data[i + 3] = frames[5].data[i + 3] * 0.2
+        //     }
 
-            ctx.putImageData(frames[5], 0, 0)
+        //     ctx.putImageData(frames[5], 0, 0)
 
-        }
+        // }
         
        
 
