@@ -99,4 +99,8 @@ body.fixed-nav li.logo {
   max-width:500px;
 }
 
+.title {
+  transform: translateY(100%);
+}
+
 
