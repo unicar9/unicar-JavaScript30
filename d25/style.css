@@ -16,7 +16,7 @@ html, body {
 }
 
 .circle {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,10 +56,26 @@ html, body {
 .ripple {
   /* position: relative; */
   /* transform: translateZ(-50px); */
-  top: -40px;
-  border: 3px solid rgb(207, 27, 27);
+  /* top: -40px; */
+  /* border: 3px solid rgb(207, 27, 27); */
+  animation: move 2s ease;
 }
 
 .ripple-reverse {
   transform: translateZ(50px);
+}
+
+@keyframes move {
+  10% {
+    top: 0px;
+    border: 3px solid rgb(207, 27, 27);
+  }
+
+  50% {
+    border: 30px solid rgb(207, 27, 27);
+  }
+  
+  100% {
+    border: 3px solid rgb(207, 27, 27);
+  }
 }

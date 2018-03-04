@@ -12,10 +12,10 @@ function logText(e) {
                     // child.classList.add('ripple-reverse')
                     console.log("Clicked: ", this)
                     console.log("Child is:", child)
-                  } , this.dataset.number  * 300)
+                  } , (5 - this.dataset.number)  * 300)
   
   // this.classList.add('ripple')
   console.log(this.classList.value)
 }
 
-$divs.forEach(div => div.addEventListener('click', logText))
+$divs.forEach(div => div.addEventListener('click', logText, {capture:true}))
