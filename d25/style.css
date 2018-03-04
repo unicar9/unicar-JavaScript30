@@ -13,14 +13,14 @@ html, body {
   align-items: center;
   transform: rotateX(60deg);
   transform-style: preserve-3d;
+  background: rgb(30, 15, 54);
 }
 
 .circle {
-  /* position: absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid darkblue;
+  border: 3px solid#004592;
 } 
 
 .one {
@@ -54,28 +54,20 @@ html, body {
 }
 
 .ripple {
-  /* position: relative; */
-  /* transform: translateZ(-50px); */
-  /* top: -40px; */
-  /* border: 3px solid rgb(207, 27, 27); */
   animation: move 2s ease;
-}
-
-.ripple-reverse {
-  transform: translateZ(50px);
 }
 
 @keyframes move {
   10% {
     top: 0px;
-    border: 3px solid rgb(207, 27, 27);
+    border: 3px solid #006EB9;
   }
 
   50% {
-    border: 30px solid rgb(207, 27, 27);
+    border: 30px solid #00E3C4;
   }
   
   100% {
-    border: 3px solid rgb(207, 27, 27);
+    border: 3px solid #004592;
   }
 }
