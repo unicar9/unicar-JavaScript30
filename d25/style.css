@@ -1,0 +1,100 @@
+:root {
+  --size: 50vw;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(30, 15, 54);
+  color: white;
+}
+
+.toggle {
+  background: none;
+  border: 3px solid #fbff1e;
+  height: 50px;
+  width: 120px;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  transition: all .5s ease
+}
+
+.toggle:hover {
+  box-shadow: inset 120px 0 0 0 #a6d634;
+  border: 3px solid #a6d634;
+  cursor: pointer;
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  transform: rotateX(60deg);
+  transform-style: preserve-3d;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid#004592;
+} 
+
+.one {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+}
+
+.two {
+  width: calc(var(--size) * 0.8);
+  height: calc(var(--size) * 0.8);
+  border-radius: 50%;
+}
+
+.three {
+  width: calc(var(--size) * 0.6);
+  height: calc(var(--size) * 0.6);
+  border-radius: 50%;
+}
+
+.four {
+  width: calc(var(--size) * 0.4);
+  height: calc(var(--size) * 0.4);
+  border-radius: 50%;
+}
+
+.five {
+  width: calc(var(--size) * 0.2);
+  height: calc(var(--size) * 0.2);
+  border-radius: 50%;
+}
+
+.ripple {
+  animation: move 2s ease;
+}
+
+@keyframes move {
+  10% {
+    top: 0px;
+    border: 3px solid #006EB9;
+  }
+
+  50% {
+    border: 30px solid #00E3C4;
+  }
+  
+  100% {
+    border: 3px solid #004592;
+  }
+}
