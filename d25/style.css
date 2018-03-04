@@ -1,0 +1,65 @@
+:root {
+  --size: 50vw;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(60deg);
+  transform-style: preserve-3d;
+}
+
+.circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid darkblue;
+} 
+
+.one {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+}
+
+.two {
+  width: calc(var(--size) * 0.8);
+  height: calc(var(--size) * 0.8);
+  border-radius: 50%;
+}
+
+.three {
+  width: calc(var(--size) * 0.6);
+  height: calc(var(--size) * 0.6);
+  border-radius: 50%;
+}
+
+.four {
+  width: calc(var(--size) * 0.4);
+  height: calc(var(--size) * 0.4);
+  border-radius: 50%;
+}
+
+.five {
+  width: calc(var(--size) * 0.2);
+  height: calc(var(--size) * 0.2);
+  border-radius: 50%;
+}
+
+.ripple {
+  /* position: relative; */
+  /* transform: translateZ(-50px); */
+  top: -40px;
+  border: 3px solid rgb(207, 27, 27);
+}
+
+.ripple-reverse {
+  transform: translateZ(50px);
+}
