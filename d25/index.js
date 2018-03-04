@@ -19,3 +19,4 @@ function logText(e) {
 }
 
 $divs.forEach(div => div.addEventListener('click', logText, {capture:true}))
+$divs.forEach(div => div.addEventListener('animationend', () => div.classList.remove('ripple')))
