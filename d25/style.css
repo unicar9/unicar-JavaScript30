@@ -9,11 +9,38 @@ html, body {
   padding: 0;
   font-family: 'Gill Sans', sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgb(30, 15, 54);
+  color: white;
+}
+
+.toggle {
+  background: none;
+  border: 3px solid #fbff1e;
+  height: 50px;
+  width: 120px;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  transition: all .5s ease
+}
+
+.toggle:hover {
+  box-shadow: inset 120px 0 0 0 #a6d634;
+  border: 3px solid #a6d634;
+  cursor: pointer;
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
   transform: rotateX(60deg);
   transform-style: preserve-3d;
-  background: rgb(30, 15, 54);
 }
 
 .circle {
