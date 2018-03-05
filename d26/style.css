@@ -2,7 +2,6 @@ html {
   box-sizing: border-box;
 }
 
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -11,8 +10,8 @@ body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(to right, #ad5389, #3c1053);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
 
 h2 {
   margin-top: 0;
@@ -24,16 +23,14 @@ nav {
   perspective: 600px;
 }
 
-
-
 .cool > li > a {
   color: yellow;
   text-decoration: none;
   font-size: 20px;
   background: rgba(0,0,0,0.2);
-  padding:10px 20px;
+  padding: 10px 20px;
   display: inline-block;
-  margin:20px;
+  margin: 20px;
   border-radius:5px;
 }
 
@@ -55,9 +52,9 @@ nav ul {
   opacity: 0;
   position: absolute;
   overflow: hidden;
-  padding:20px;
-  top:-20px;
-  border-radius:2px;
+  padding: 20px;
+  top: -20px;
+  border-radius: 2px;
   transition: all 0.5s;
   transform: translateY(100px);
   will-change: opacity;
@@ -72,8 +69,6 @@ nav ul {
   opacity: 1;
 }
 
-
-
 .dropdownBackground {
   width:100px;
   height:100px;
@@ -81,7 +76,7 @@ nav ul {
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
-  transition:all 0.3s, opacity 0.1s, transform 0.2s;
+  transition: all 0.3s, opacity 0.1s, transform 0.2s;
   transform-origin: 50% 0;
   display: flex;
   justify-content: center;
