@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+.boundary {
+  position: absolute;
+  width: 60vw;
+  height: 100vh;
+  background: grey;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  
+}
+
 .timer-stack {
   position: relative;
   margin: 40px auto;
@@ -17,12 +28,10 @@
   perspective-origin: 50% 150%;
 }
 
-
-.timer-stack li {
+.card {
   position: absolute;
+  background: #23F0C7;
   margin: 10px;
-	z-index: 1;
-  background: orange;
 	width: 340px;
   height: 380px;
 	border-width: 60px 20px;
@@ -31,18 +40,39 @@
 	box-shadow: 0 10px 7px -7px rgba(0,0,0,0.12), 0 0 4px rgba(0,0,0,0.1);
 	opacity: 1;
 	cursor: pointer;
-	/* transform: translate3d(0,0,0px); */
-	transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
 }
 
-.card3 {
-  transform: translate3d(0,0,-60px);
+.card:nth-child(2) {
+  background: #EF767A;
 }
 
-.card2 {
-  transform: translate3d(0,0,-120px);
+.card:nth-child(3) {
+  background: #7D7ABC;
+
 }
 
-.card1 {
-  transform: translate3d(0,0,-180px);
+.card:nth-child(4) {
+  background: #FFE347;
+}
+
+.moveback {
+  transition: transform .3s cubic-bezier(0.24, 0.2, 0.7, 1.76);
+}
+
+.moveaway {
+  animation: moveaway .5s ease-in;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes moveaway {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

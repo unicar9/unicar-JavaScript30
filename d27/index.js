@@ -1,22 +1,29 @@
-const cards = document.querySelectorAll('#timer-stack li')
+const cards = Array.from(document.querySelectorAll('.card'))
+let topCard = cards[0]
 
-const card1 = document.querySelector('.card1')
-const card2 = document.querySelector('.card2')
-const card3 = document.querySelector('.card3')
-const card4 = document.querySelector('.card4')
+cards.forEach(c => {
+  c.addEventListener('mousedown', handleMouseDown)
+})
+
+function updateCards(cards) {
+  
+  cards.forEach((c, i) => {
+    c.style.zIndex = cards.length - i
+    c.style.transform = `translate3d(0, 0, ${i * -60}px`
+    c.style.opacity = 1
+    if(i === cards.length - 1) {
+      c.style.opacity = 0
+    }
+  })
+  console.log('updatedaaaaa!!!!!')
+}
+
+updateCards(cards)
 
 let isDown = false
 let startX
 let startY
 
-
-// card1.addEventListener('mousedown', handleMouseDown) 
-// card1.addEventListener('mouseleave', handleMouseLeave) 
-// card1.addEventListener('mouseup', handleMouseUp) 
-// card1.addEventListener('mousemove', handleMouseMove) 
-
-card4.addEventListener('mousedown', handleMouseDown) 
-card4.addEventListener('mouseleave', handleMouseLeave) 
 window.addEventListener('mouseup', handleMouseUp) 
 window.addEventListener('mousemove', handleMouseMove) 
 
@@ -24,29 +31,57 @@ function handleMouseDown(e) {
   isDown = true
   startX = e.pageX
   startY = e.pageY
-  console.log(e)
 }
-
-function handleMouseLeave(e) {
-  // isDown = false
-}
-
 
 function handleMouseUp(e) {
   isDown = false
-  cards.forEach(card => {
-    card.style.transform = `translate3d(0,0,0px)`
+  cards.forEach((card, i) => {
+    card.style.transform = `translate3d(0,0,${i * -60}px)`
+    card.classList.add('moveback')
+    card.addEventListener('transitionend', () => card.classList.remove('moveback'))
   })
 }
 
 function handleMouseMove(e) {
   if (!isDown) {return}
-  console.log("move", this)
   transX = e.pageX - startX
   transY = e.pageY - startY
-  card4.style.transform = `translateX(${transX}px) translateY(${transY}px) translateZ(-0px)`
-  card3.style.transform = `translateX(${transX * 0.5}px) translateY(${transY * 0.5}px) translateZ(-60px)`
-  card2.style.transform = `translateX(${transX * 0.2}px) translateY(${transY * 0.2}px) translateZ(-120px)`
-  card1.style.transform = `translateX(${transX * 0.1}px) translateY(${transY * 0.1}px) translateZ(-180px)`
-  console.log({transX, transY})
+
+  cards.forEach((c, i) => {
+    c.style.transform = `translate3d(${transX / (i+1)}px, ${transY / (i+1)}px, ${i * -60}px)`
+  })
+
+
+  if (Math.abs(transX) > 0.3 * window.innerWidth ) {
+    isDown = false
+
+    let promise = new Promise((resolve, reject) => {
+      cards.forEach((c, i) => {
+        if (i === 0) {
+          c.classList.add('moveaway')
+          c.addEventListener('animationend', () => {
+            c.classList.remove('moveaway')            
+            resolve('ok')
+          })
+        } else {
+          c.style.transform = `translate3d(0,0,${i * -60}px)`
+          c.classList.add('moveback')
+          c.addEventListener('transitionend', () => {
+            c.classList.remove('moveback')            
+          })
+        }
+      })
+   
+    })
+    promise.then((res) => {
+      resetCards()
+    })
+  }
+}
+
+function resetCards() {
+  const topCard = cards[0]
+  cards.shift()
+  cards.push(topCard)
+  updateCards(cards)
 }
