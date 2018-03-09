@@ -9,21 +9,27 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
-  cursor: url(mallet.png), auto;
   user-select: none;
 }
 
 body {
   padding: 0;
-  margin:0;
+  margin: 0;
   font-family: 'Amatic SC', cursive;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
-  font-size: 10rem;
-  line-height:1;
-  margin-bottom: 0;
+  font-size: 8rem;
+  line-height: .8;
+  margin: 2rem;
 }
 
 .score {
@@ -34,14 +40,11 @@ h1 {
 }
 
 button {
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
   width: 8rem;
   height: 5rem;
-  margin: 20px auto;
   font-family: 'Amatic SC', cursive;
   font-size: 3rem;
+  margin-top: 2rem;
 }
 
 button:hover {
@@ -54,7 +57,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   margin:0 auto;
-  cursor: none;
+  cursor: url(mallet.png), auto;
 }
 
 .hole {
