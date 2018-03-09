@@ -9,7 +9,7 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
-  cursor: none;
+  cursor: url(mallet.png), auto;
   user-select: none;
 }
 
@@ -28,17 +28,33 @@ h1 {
 
 .score {
   background:rgba(255,255,255,0.2);
-  padding:0 3rem;
-  line-height:1;
-  border-radius:1rem;
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
+}
+
+button {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 8rem;
+  height: 5rem;
+  margin: 20px auto;
+  font-family: 'Amatic SC', cursive;
+  font-size: 3rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .game {
-  width:600px;
-  height:400px;
-  display:flex;
-  flex-wrap:wrap;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
   margin:0 auto;
+  cursor: none;
 }
 
 .hole {
@@ -72,7 +88,6 @@ h1 {
 .hole.up .mole {
   top:0;
 }
-
 
 .mallet {
   position: absolute;
