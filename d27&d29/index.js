@@ -81,7 +81,66 @@ function handleMouseMove(e) {
 
 function resetCards() {
   const topCard = cards[0]
+  console.log(topCard)
   cards.shift()
   cards.push(topCard)
   updateCards(cards)
+
+  clearInterval(countdown)
+
+  if (!topCard.classList.contains('form')) {
+    const initSeconds = +topCard.querySelector('button').dataset.time
+    displayTimeLeft(initSeconds)
+  } else {
+    timerDisplay.textContent = ''
+  }
+
+  timerDisplay = cards[0].querySelector('.display__time-left')
+
+  // console.log("new", timerDisplay)
 }
+
+let countdown
+let timerDisplay
+
+const buttons = document.querySelectorAll('[data-time]')
+timerDisplay = document.querySelector('.display__time-left')
+
+function timer(seconds) {
+  // clear any existing timers
+  clearInterval(countdown)
+
+  countdown = setInterval(() => {
+    seconds--
+
+    if (seconds < 0) {
+      clearInterval(countdown)
+      return
+    }
+
+    displayTimeLeft(seconds)
+  }, 1000)
+}
+
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60)
+  const remainderSeconds = seconds % 60
+  const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`
+  document.title = display;
+  timerDisplay.textContent = display;
+}
+
+function startTimer() {
+  const seconds = parseInt(this.dataset.time)
+  console.log(this)
+  timer(seconds)
+}
+
+buttons.forEach(button => button.addEventListener('click', startTimer))
+document.customForm.addEventListener('submit', function(e) {
+  e.preventDefault()
+  const mins = this.minutes.value
+  console.log(mins)
+  timer(mins * 60)
+  this.reset()
+})
