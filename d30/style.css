@@ -3,14 +3,14 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #ffc600;
+  background: #99c4b3;
   font-family: 'Amatic SC', cursive;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
-  /* cursor: url('https://i.imgur.com/QoV2QNZ.png') auto */
-  cursor: url(dirt.svg), auto;
+  cursor: url(malletcopy.png), auto;
+  /* cursor: url(dirt.svg), auto; */
   user-select: none;
 }
 

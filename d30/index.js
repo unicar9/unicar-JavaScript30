@@ -17,3 +17,4 @@ window.onload = function() {
     gui.add(text, 'displayOutline');
     gui.add(text, 'explode');
 }
+
