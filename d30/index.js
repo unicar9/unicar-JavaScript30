@@ -1,22 +1,19 @@
 
-// var FizzyText = function() {
-//     this.message = 'dat.gui'
-//     this.speed = 0.8
-//     this.displayOutline = false
-//     // this.explode = function() {  }
-//     // Define render logic ...
-// }
+const Config = function() {
+    this.bgColor = '#99c4b3'
+    this.gameDuration = 10
+    this.minTime = 100
+    this.maxTime = 1000
+}
 
-
-
-// window.onload = function() {
-//     var text = new FizzyText()
-//     var gui = new dat.GUI()
-//     gui.add(text, 'message')
-//     gui.add(text, 'speed', -5, 5)
-//     gui.add(text, 'displayOutline')
-//     gui.add(text, 'explode')
-// }
+window.onload = function() {
+    const text = new Config()
+    const gui = new dat.GUI()
+    gui.addColor(text, 'bgColor')
+    gui.add(text, 'gameDuration', 10, 30).step(1)
+    gui.add(text, 'minTime', 100, 500)
+    gui.add(text, 'maxTime', 1000, 2000)
+}
 
 const malletCursor = document.querySelector('.mallet')
 const holes = document.querySelectorAll('.hole')
@@ -27,19 +24,16 @@ let lastHole
 let timeUp = false
 let score = 0
 
-// game.addEventListener('mousemove', (e) => {
-//     console.log(e)
-//     malletCursor.style.left = `${e.pageX}px`
-//     malletCursor.style.top = `${e.pageY}px`
+game.addEventListener('mousedown', malletHit)
+game.addEventListener('mouseup', malletHitOver)
 
-// })
+function malletHit(e) {
+    this.style.cursor = 'url(mallet-hit.png), auto'
+}
 
-
-// window.addEventListener('mousedown', () => {
-//     malletCursor.classList.add('hit')
-// })
-
-// malletCursor.addEventListener('transitionend', () => malletCursor.classList.remove('hit'))
+function malletHitOver(e) {
+    this.style.cursor = 'url(mallet.png), auto'    
+}
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min)

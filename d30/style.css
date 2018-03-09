@@ -60,6 +60,10 @@ button:hover {
   cursor: url(mallet.png), auto;
 }
 
+.game::click {
+  cursor: url(mallet-hit.png), auto;
+}
+
 .hole {
   flex: 1 0 33.33%;
   overflow: hidden;
