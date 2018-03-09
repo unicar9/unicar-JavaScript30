@@ -11,8 +11,8 @@ const gui = new dat.GUI()
 
 const bgColorCtrl = gui.addColor(config, 'bgColor')
 const gdCtrl = gui.add(config, 'gameDuration', 10, 30).step(1)
-gui.add(config, 'minTime', 100, 500)
-gui.add(config, 'maxTime', 1000, 2000)
+const minCtrl = gui.add(config, 'minTime', 100, 500)
+const maxCtrl = gui.add(config, 'maxTime', 1000, 2000)
 
 bgColorCtrl.onChange(function(value) {
     document.body.style.background = value
@@ -23,6 +23,13 @@ gdCtrl.onFinishChange(function(value) {
     duration = value * 1000
 })
 
+minCtrl.onFinishChange(function(value) {
+    minTime = value
+})
+
+maxCtrl.onFinishChange(function(value) {
+    maxTime = value
+})
 
 const malletCursor = document.querySelector('.mallet')
 const holes = document.querySelectorAll('.hole')
@@ -34,6 +41,8 @@ let lastHole
 let timeUp = false
 let score = 0
 let duration = 10000
+let minTime = 200
+let maxTime = 1000
 let countdown
 
 game.addEventListener('mousedown', malletHit)
@@ -62,7 +71,7 @@ function randomHole(holes) {
 }
 
 function peep() {
-    const time = randomTime(200, 1000)
+    const time = randomTime(minTime, maxTime)
     const hole = randomHole(holes)
     hole.classList.add('up')
     setTimeout(() => {
@@ -77,18 +86,15 @@ function startGame(duration) {
     score = 0
     peep()
     let seconds = duration / 1000
-    // setTimeout(() => timeUp = true, duration)
 
     countdown = setInterval(() => {
         seconds--
-
         if (seconds < 0) {
             clearInterval(countdown)
             timeUp = true
             button.textContent = 'START!'
             return
         }
-
         button.textContent = `${seconds} S`
     }, 1000)
 }
