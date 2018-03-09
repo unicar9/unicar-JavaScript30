@@ -4,15 +4,16 @@
     box-sizing: border-box;
 }
 
-.boundary {
-  position: absolute;
-  width: 60vw;
-  height: 100vh;
-  background: grey;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  
+body {
+  background: #3B5998;
+}
+
+* {
+  user-select: none;
+}
+
+*:focus {
+  outline: none;
 }
 
 button {
@@ -32,6 +33,34 @@ button {
 button:active {
   box-shadow: 0 3px rgba(0,0,0,0.2);
   transform: translateY(4px);
+}
+
+form input {
+  width: 100%;
+  border: 1px solid #FFE347;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #353535;
+}
+
+input::placeholder {
+  color: rgba(0,0,0,0.2)
+}
+
+.display {
+  flex:1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 6rem;
+  margin: 0;
+  color:white;
+  text-shadow:4px 4px 0 rgba(0,0,0,0.05);
 }
 
 .timer-stack {
@@ -60,7 +89,6 @@ button:active {
 	opacity: 1;
 	cursor: pointer;
   transform-style: preserve-3d;
-
 }
 
 .card:nth-child(2) {
