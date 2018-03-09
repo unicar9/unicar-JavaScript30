@@ -15,6 +15,25 @@
   
 }
 
+button {
+  width: 100%;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color:white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background:rgba(0,0,0,0.1);
+  box-shadow: 0 7px rgba(0,0,0,0.2);
+  padding: .5rem;
+  transition: all 0.2s linear;
+}
+
+.button:hover {
+  box-shadow: 0 3px rgba(0,0,0,0.2);
+  transform: translateY(4px);
+}
+
 .timer-stack {
   position: relative;
   margin: 40px auto;

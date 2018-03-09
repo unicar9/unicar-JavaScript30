@@ -19,13 +19,13 @@ html {
 }
 
 .keys {
-    display: flex;
+  display: flex;
 }
 
 .sound-name {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 8rem;
-    color: #457C8F;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8rem;
+  color: #457C8F;
 }
 
 .key {
@@ -43,18 +43,18 @@ html {
 }
 
 .key:nth-child(3n+1) {
-    background: #f8ba97;
-    box-shadow: 0 5px 0 #b88a70;
+  background: #f8ba97;
+  box-shadow: 0 5px 0 #b88a70;
 }
 
 .key:nth-child(3n+2) {
-    background: #522B5F;
-    box-shadow: 0 5px 0 #361342;
+  background: #522B5F;
+  box-shadow: 0 5px 0 #361342;
 }
 
 .key:nth-child(3n) {
-    background: #C7EE81;
-    box-shadow: 0 5px 0 #9fbd68;
+  background: #C7EE81;
+  box-shadow: 0 5px 0 #9fbd68;
 }
 
 .playing:nth-child(3n+1) {
@@ -71,11 +71,3 @@ html {
   box-shadow: 0 2px 0 #9fbd68;
   transform: translateY(3px);
 }
-
-/* .sound-name {
-    display: flex;
-    flex: 1;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-} */
