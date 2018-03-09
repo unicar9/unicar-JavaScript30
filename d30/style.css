@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+
 html {
   box-sizing: border-box;
   font-size: 10px;
   background: #ffc600;
+  font-family: 'Amatic SC', cursive;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
+  /* cursor: url('https://i.imgur.com/QoV2QNZ.png') auto */
+  cursor: url(dirt.svg), auto;
+  user-select: none;
 }
 
 body {
