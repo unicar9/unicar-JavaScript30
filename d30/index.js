@@ -6,23 +6,35 @@ const Config = function() {
     this.maxTime = 1000
 }
 
-window.onload = function() {
-    const text = new Config()
-    const gui = new dat.GUI()
-    gui.addColor(text, 'bgColor')
-    gui.add(text, 'gameDuration', 10, 30).step(1)
-    gui.add(text, 'minTime', 100, 500)
-    gui.add(text, 'maxTime', 1000, 2000)
-}
+const config = new Config()
+const gui = new dat.GUI()
+
+const bgColorCtrl = gui.addColor(config, 'bgColor')
+const gdCtrl = gui.add(config, 'gameDuration', 10, 30).step(1)
+gui.add(config, 'minTime', 100, 500)
+gui.add(config, 'maxTime', 1000, 2000)
+
+bgColorCtrl.onChange(function(value) {
+    document.body.style.background = value
+})
+
+gdCtrl.onFinishChange(function(value) {
+    console.log(value)
+    duration = value * 1000
+})
+
 
 const malletCursor = document.querySelector('.mallet')
 const holes = document.querySelectorAll('.hole')
 const scoreBoard = document.querySelector('.score')
 const moles = document.querySelectorAll('.mole')
 const game = document.querySelector('.game')
+const button = document.querySelector('button')
 let lastHole
 let timeUp = false
 let score = 0
+let duration = 10000
+let countdown
 
 game.addEventListener('mousedown', malletHit)
 game.addEventListener('mouseup', malletHitOver)
@@ -59,13 +71,28 @@ function peep() {
     }, time)
 }
 
-function startGame() {
+function startGame(duration) {
     scoreBoard.textContent = 0
     timeUp = false
     score = 0
     peep()
-    setTimeout(() => timeUp = true, 10000)
+    let seconds = duration / 1000
+    // setTimeout(() => timeUp = true, duration)
+
+    countdown = setInterval(() => {
+        seconds--
+
+        if (seconds < 0) {
+            clearInterval(countdown)
+            timeUp = true
+            button.textContent = 'START!'
+            return
+        }
+
+        button.textContent = `${seconds} S`
+    }, 1000)
 }
+
 
 function bonk(e) {
     if(!e.isTrusted) return // cheater!

@@ -3,7 +3,6 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #99c4b3;
   font-family: 'Amatic SC', cursive;
 }
 
@@ -15,6 +14,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  background: #99c4b3;
   font-family: 'Amatic SC', cursive;
 }
 
