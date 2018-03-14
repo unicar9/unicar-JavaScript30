@@ -15,7 +15,7 @@ function updateCards(cards) {
       c.style.opacity = 0
     }
   })
-  console.log('updatedaaaaa!!!!!')
+  // console.log('updatedaaaaa!!!!!')
 }
 
 updateCards(cards)
@@ -26,6 +26,10 @@ let startY
 
 window.addEventListener('mouseup', handleMouseUp) 
 window.addEventListener('mousemove', handleMouseMove) 
+
+window.addEventListener('touchcancel', (e) => console.log(e), false) 
+window.addEventListener('touchmove', (e) => console.log(e), false) 
+window.addEventListener('touchstart', (e) => console.log(e), false) 
 
 function handleMouseDown(e) {
   isDown = true
@@ -81,7 +85,7 @@ function handleMouseMove(e) {
 
 function resetCards() {
   const topCard = cards[0]
-  console.log(topCard)
+  // console.log(topCard)
   cards.shift()
   cards.push(topCard)
   updateCards(cards)
@@ -132,7 +136,7 @@ function displayTimeLeft(seconds) {
 
 function startTimer() {
   const seconds = parseInt(this.dataset.time)
-  console.log(this)
+  // console.log(this)
   timer(seconds)
 }
 
@@ -140,7 +144,7 @@ buttons.forEach(button => button.addEventListener('click', startTimer))
 document.customForm.addEventListener('submit', function(e) {
   e.preventDefault()
   const mins = this.minutes.value
-  console.log(mins)
+  // console.log(mins)
   timer(mins * 60)
   this.reset()
 })
