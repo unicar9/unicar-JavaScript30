@@ -3,6 +3,7 @@ let topCard = cards[0]
 
 cards.forEach(c => {
   c.addEventListener('mousedown', handleMouseDown)
+  c.addEventListener('touchstart', handleMouseDown)
 })
 
 function updateCards(cards) {
@@ -27,9 +28,9 @@ let startY
 window.addEventListener('mouseup', handleMouseUp) 
 window.addEventListener('mousemove', handleMouseMove) 
 
-window.addEventListener('touchcancel', (e) => console.log(e), false) 
-window.addEventListener('touchmove', (e) => console.log(e), false) 
-window.addEventListener('touchstart', (e) => console.log(e), false) 
+window.addEventListener('touchend', handleMouseUp, false) 
+window.addEventListener('touchmove', handleMouseMove, false) 
+
 
 function handleMouseDown(e) {
   isDown = true
@@ -47,6 +48,7 @@ function handleMouseUp(e) {
 }
 
 function handleMouseMove(e) {
+  e.preventDefault()
   if (!isDown) {return}
   transX = e.pageX - startX
   transY = e.pageY - startY
