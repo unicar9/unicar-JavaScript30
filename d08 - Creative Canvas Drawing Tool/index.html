@@ -9,9 +9,11 @@
     <script src="index.js"></script>
     <title>Canvas Drawing Tool</title>
     <style>
+        body {
+            font-family: 'Gill Sans', sans-serif;
+        }
         .info {
             color:azure;
-            font-family: 'Gill Sans', sans-serif;
             font-size: 1em;
             width: calc(100vw - 60%);
             margin: 0 auto;
@@ -26,13 +28,30 @@
             position: absolute;
             left: 10px;
             top: 10px;
-            width: 4rem;
-            height: 2rem;
-            color: white;
+            width: 8rem;
+            height: 3rem;
+            font-size: 1.5rem;
             background: darkorange;
+            color: white;
+            overflow: hidden;
             cursor: pointer;
             text-align: center;
-            line-height: 2rem;
+            line-height: 3rem;
+            z-index: 10;
+        }
+        .save::after {
+            position: absolute;
+            content:'';
+            display: inline-block;
+            background: linear-gradient(to right top, #47dfff, #08cbff, #6eaeff, #bf85ff, #f848c6);
+            width: 16rem;
+            height: 3rem;
+            z-index: -1;
+            transform: translateX(-12rem);
+            transition: transform 400ms ease-in;
+        }
+        .save:hover::after {
+            transform: translateX(-8rem);
         }
     </style>
 </head>
