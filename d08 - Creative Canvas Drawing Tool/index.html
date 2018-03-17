@@ -22,10 +22,23 @@
             top: 0;
             left: 0;
         }
+        .save {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 4rem;
+            height: 2rem;
+            color: white;
+            background: darkorange;
+            cursor: pointer;
+            text-align: center;
+            line-height: 2rem;
+        }
     </style>
 </head>
 
 <body style="background: black">
+    <div class="save">Save</div>
 
     <div class="info">
         <p>Simply click down and drag to draw</p>
@@ -36,6 +49,7 @@
 <script>
     const canvas = document.querySelector('#draw');
     const ctx = canvas.getContext('2d');
+    const save = document.querySelector('.save')
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
