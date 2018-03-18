@@ -25,6 +25,7 @@
             left: 0;
         }
         .save {
+            text-decoration: none;
             position: absolute;
             left: 10px;
             top: 10px;
@@ -57,7 +58,7 @@
 </head>
 
 <body style="background: black">
-    <div class="save">Save</div>
+    <a class="save" download="image.png">Save</a>
 
     <div class="info">
         <p>Simply click down and drag to draw</p>
@@ -113,6 +114,12 @@
 
     }
 
+    function saveDrawing() {
+        console.log(canvas)
+        const image = canvas.toDataURL('image/png')
+        this.href = image
+    }
+
     canvas.addEventListener('mousedown', (e) => {
         points = []
         isDrawing = true;
@@ -137,6 +144,7 @@
         isDrawing = false;
         points = [];
     });
+    save.addEventListener('click', saveDrawing)
 
     
 </script>
